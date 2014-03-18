@@ -50,3 +50,12 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+####################
+# Tests
+
+# Benutze RSpec als Test-Framework
+gem 'rspec-rails', group: [:development, :test]
+
+# Simuliere Benutzer
+gem 'capybara'
