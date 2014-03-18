@@ -59,3 +59,10 @@ gem 'rspec-rails', group: [:development, :test]
 
 # Simuliere Benutzer
 gem 'capybara'
+
+
+####################
+# Development
+
+# Schreibt Felder des Models in Model-Datei
+gem 'annotate'
