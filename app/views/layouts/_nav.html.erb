@@ -1,0 +1,40 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<%= link_to raw("<span class='glyphicon glyphicon-chevron-left'></span> Judo-Homepage"), root_path, class: "navbar-brand" %>
+		</div>
+		<div class="navbar-collapse collapse in">
+			<ul class="nav navbar-nav">
+				<% if policy(User.new).index? || policy(Role.new).index? %>
+				<li <%= 'class=active' if controller?("users", "roles")%>>
+					<%= link_to t("activerecord.models.user"), users_path %>
+				</li>
+				<% end %>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+
+				<% if signed_in? %>
+				<li class="dropdown">
+					<a data-toggle="dropdown" href="#"><%= current_user.name %> <b class="caret"></b> </a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li>
+							<%= link_to raw("<span class='glyphicon glyphicon-user'></span> Profil"), current_user %>
+						</li>
+						<li>
+							<%= link_to raw("<span class='glyphicon glyphicon-cog'></span> Einstellungen"), edit_user_path(current_user) %>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<%= link_to raw("<span class='glyphicon glyphicon-log-out'></span> #{t('views.session.destroy.action')}"), signout_path, :method => "delete" %>
+						</li>
+					</ul>
+				</li>
+				<% else %>
+				<li>
+					<%= link_to t('views.session.new.action'), signin_path %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</header>

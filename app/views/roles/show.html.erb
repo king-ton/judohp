@@ -1,0 +1,15 @@
+<% provide(:title, @role.name) %>
+<% provide(:sidebar, 'user') %>
+
+<h4 class"page-header"><%= t('activerecord.attributes.role.activities') %>:</h2>
+<ul class="list-group">
+	<% @act.each do |a| %>
+	<li class="list-group-item">
+		<strong><%= t("views.#{a[0]}", count: 2) %>:</strong>
+		<% a[1].each do |act| %>
+		<%= t("views.#{act.split(':')[0]}.#{act.split(':')[1]}.action").gsub(/#{t("views.#{a[0]}", :count => 1)}[n]?-?\s?/, '').capitalize %><%= ", " if a[1].last != act %>
+
+		<% end %>
+	</li>
+	<% end %>
+</ul>

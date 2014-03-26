@@ -1,0 +1,30 @@
+<% provide(:title, t('views.role.index.title')) %>
+<% provide(:sidebar, 'user') %>
+
+<table class="table table-hover table-striped">
+	<thead>
+		<tr>
+			<th><%= t('activerecord.attributes.role.name') %></th>
+			<th><%= t('activerecord.attributes.role.activities')%>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @roles.each do |role| %>
+		<tr>
+			<td><%= role.name %></td>
+			<td>
+				<% role.activities.each do |act| %>
+				<%= t("views.#{act.split(':')[0]}.#{act.split(':')[1]}.action") %><%= ", " if role.activities.last != act %>
+				<% end %>
+			</td>
+			<td><%= link_to raw("<span class='glyphicon glyphicon-th-list'></span>"), role %></td>
+			<td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_role_path(role) %></td>
+			<td><%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), role, method: :delete, id: "delete", data: { confirm: t('views.are_you_sure') } %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

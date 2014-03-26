@@ -1,9 +1,20 @@
 Judohp::Application.routes.draw do
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+    resources :users, :path => I18n.t('activerecord.models.user').downcase
+  end
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+    resources :roles, :path => I18n.t('activerecord.models.role').downcase
+  end
+  resources :sessions, only: [:new, :create, :destroy]
+  
+  match I18n.t('views.session.new.action').downcase, to: 'sessions#new', via: :get, as: 'signin'
+  match I18n.t('views.session.destroy.action').downcase, to: 'sessions#destroy', via: :delete, as: 'signout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'users#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

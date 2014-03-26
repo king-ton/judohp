@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Judohp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>JudoHP | <%= yield(:title) %></title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-<%= yield %>
+		<%= render 'layouts/nav' %>
 
-</body>
+		<div class="container-fluid">
+
+			<div class="row">
+				<% if policy(User.new).index? || policy(Role.new).index? %>
+				<div class="col-md-2 sidebar">
+					<%= render "layouts/sidebar_#{yield(:sidebar)}" if yield(:sidebar) != ""%>
+				</div>
+				<% else %>
+				<% provide(:sidebar, '') %>
+				<% end %>
+				<div class="col-md-<%= yield(:sidebar) != "" ? "10" : "12" %>">
+
+					<%= render 'layouts/action_links'%>
+
+					<h1 class="page-header"><%= yield(:headline) != "" ? yield(:headline) : yield(:title )%></h1>
+
+					<% flash.each do |key, value| %>
+					<div class="alert alert-<%= key %> alert-dismissable fade in">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+							&times;
+						</button>
+						<%= value %>
+					</div>
+					<% end %>
+
+					<%= yield %>
+
+					<%= render 'layouts/footer' %>
+					<%= debug(params) if Rails.env.development? %>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

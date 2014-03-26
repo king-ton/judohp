@@ -39,9 +39,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
-
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -51,6 +48,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
 ####################
 # Tests
 
@@ -58,11 +56,25 @@ end
 gem 'rspec-rails', group: [:development, :test]
 
 # Simuliere Benutzer
-gem 'capybara'
+gem 'capybara', group: [:development, :test]
+
+# Erzeuge Datensätze nach bestimmten Muster
+gem 'factory_girl_rails', group: [:development, :test]
 
 
 ####################
 # Development
 
 # Schreibt Felder des Models in Model-Datei
-gem 'annotate'
+gem 'annotate', group: :development
+
+####################
+# RBAC-Sytem
+
+# Benutze ActiveModel has_secure_password
+gem 'bcrypt-ruby'
+
+# Authorization-Gem
+gem 'pundit'
+
+gem 'simple_form'

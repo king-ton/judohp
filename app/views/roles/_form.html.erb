@@ -1,0 +1,33 @@
+<%= simple_form_for @role do |f| %>
+<div class="row">
+	<div class="col-md-3">
+		<div class="form-group <%= "has-error" if @role.errors[:name].any? %>">
+			<%= f.input :name, required: false, error: false, input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+			<% if @role.errors[:name].any? %>
+			<span class="help-block"><%= @role.errors.full_messages_for(:name).first %></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<% @acts.each do |a| %>
+
+	<div class="col-md-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= t("views.#{a[0]}", count: 2) %></h3>
+			</div>
+			<div class="panel-body">
+				<%= f.collection_check_boxes :activities, a[1], :to_s, :to_s, {:item_wrapper_tag => :div, :item_wrapper_class => 'checkbox'} do |b| %>
+				<% b.label(:class => 'control-label') { b.check_box+ t("views.#{b.text.split(':')[0]}.#{b.text.split(':')[1]}.action") } %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+</div>
+
+<%= f.submit :class => 'btn btn-success' %>
+
+<% end %>

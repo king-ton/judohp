@@ -1,0 +1,31 @@
+<ul class="nav nav-pills pull-right action-links">
+	<% if controller?('users', 'roles') && policy(Object.const_get(params[:controller].chop.capitalize).new).index? %>
+	<%# Übersicht %>
+	<% if action?('show', 'new', 'create', 'edit', 'update')%>
+	<li>
+		<%= link_to raw("<span class='glyphicon glyphicon-th'></span> #{t('views.index')}"), send(params[:controller] + "_path") %>
+	</li>
+	<% end %>
+
+	<%# Details %>
+	<% if action?('edit', 'update') && policy(Object.const_get(params[:controller].chop.capitalize).new).show? %>
+	<li>
+		<%= link_to raw("<span class='glyphicon glyphicon-th-list'></span> #{t('views.show')}"), send(params[:controller] + "_path", instance_variable_get("@#{params[:controller]}")) %>
+	</li>
+	<% end %>
+
+	<%# erstellen %>
+	<% if action?('index') && policy(Object.const_get(params[:controller].chop.capitalize).new).new? %>
+	<li>
+		<%= link_to raw("<span class='glyphicon glyphicon-plus'></span> #{t('views.' + params[:controller].chop! + '.new.action')}"), send("new_" + params[:controller] + "_path") %>
+	</li>
+	<% end %>
+
+	<%# bearbeiten %>
+	<% if action?('show') && policy(Object.const_get(params[:controller].chop.capitalize).new).edit? %>
+	<li>
+		<%= link_to raw("<span class='glyphicon glyphicon-pencil'></span> #{t('views.edit')}"), send("edit_" + params[:controller].chop! + "_path", instance_variable_get("@#{params[:controller]}")) %>
+	</li>
+	<% end %>
+	<% end %>
+</ul>

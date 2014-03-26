@@ -1,0 +1,14 @@
+<% provide(:title, @user.name) %>
+<% provide(:sidebar, 'user') %>
+
+<p>
+	<strong><%= t('activerecord.attributes.user.email') %>:</strong>
+	<%= @user.email %>
+</p>
+<p>
+	<strong><%= t('views.role', count: @user.roles.count) %>:</strong>
+	<% @user.roles.each do |role| %>
+	<%= link_to role.name, role_path(role) %><%= ", " if @user.roles.last != role %>
+	<% end %>
+</p>
+
