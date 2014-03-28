@@ -1,0 +1,63 @@
+<%= simple_form_for(@person) do |f| %>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f.input :last_name, input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f.input :first_name, input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f.input :gender,:as => :select, :collection => [[t('gender.male'),true], [t('gender.female'),false]], input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f.input :birth_place, input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.input :street, input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-2">
+		<div class="form-group">
+			<%= f.input :zip, input_html: { class: 'form-control', :value => ("%05d" % f.object.zip if f.object.zip != nil) } %>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<%= f.input :city, input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f.association :user, input_html: { class: 'form-control' } %>
+		</div>
+	</div>
+</div>
+
+<%= f.button :submit,  :class => 'btn btn-success' %>
+
+<% end %>
+

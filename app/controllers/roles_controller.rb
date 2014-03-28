@@ -61,8 +61,9 @@ class RolesController < ApplicationController
   end
 
   def set_acts
-    @acts = ["user:index",  "user:show",  "user:new", "user:edit",  "user:destroy",
-             "role:index",  "role:show",  "role:new", "role:edit",  "role:destroy"]
+    @acts = ["user:index",    "user:show",    "user:new",   "user:edit",    "user:delete",
+             "role:index",    "role:show",    "role:new",   "role:edit",    "role:delete",
+             "person:index",  "person:show",  "person:new", "person:edit",  "person:delete"]
              .group_by { |act| act[/([a-z]+)\:[a-z]+/, 1] }
   end
 

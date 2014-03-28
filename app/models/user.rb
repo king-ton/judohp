@@ -15,6 +15,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
+  has_many :people
   
   # Name
   validates :name, presence: true

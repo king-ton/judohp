@@ -10,6 +10,11 @@
 					<%= link_to t("activerecord.models.user"), users_path %>
 				</li>
 				<% end %>
+				<% if policy(Person.new).index? %>
+				<li <%= 'class=active' if controller?("people")%>>
+					<%= link_to t("activerecord.models.member"), people_path %>
+				</li>
+				<% end %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 

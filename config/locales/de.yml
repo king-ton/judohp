@@ -1,9 +1,21 @@
 de:
   activerecord:
     models:
+      member: "Mitglieder"
+      person: "Personen"
       role: "Rollen"
       user: "Benutzer"
     attributes:
+      person:
+        last_name: "Nachname"
+        first_name: "Vorname"
+        gender: "Geschlecht"
+        birth_date: "Geburtsdatum"
+        birth_place: "Geburtsort"
+        street: "Straße"
+        zip: "Postleitzahl"
+        city: "Wohnort"
+        user: "Benutzer"
       role:
         name: "Name"
         activities: "Berechtigungen"
@@ -18,14 +30,39 @@ de:
     new: "Neu"
     edit: "Bearbeiten"
     destroy: "Löschen"
-    are_you_sure: "Sind sie sicher?"
+    are_you_sure: "Wirklich löschen?"
     back: "Zurück"
+    cancel: "Abbrechen"
     edit: "Bearbeiten"
+    member:
+      one: "Mitglied"
+      other: "Mitglieder"
+    person:
+      one: "Person"
+      other: "Personen"
+      index:
+        title: "Personen-Übersicht"
+        action: "Alle Personen anzeigen"
+      show:
+        action: "Personen-Details anzeigen"
+      new:
+        title: "Neue Person"
+        action: "Person erstellen"
+      edit:
+        title: "Person bearbeiten"
+        action: "Person aktualisieren"
+      delete:
+        title: "Person löschen"
+        action: "Person löschen"
+      msg:
+        created: "Die Person wurde erfolgreich erstellt."
+        updated: "Die Person wurde erfolgreich aktualisiert."
+        destroyed: "Die Person wurde erfolgreich gelöscht."
     role:
       one: "Rolle"
       other: "Rollen"
       index:
-        title: "Alle Rollen"
+        title: "Rollen-Übersicht"
         action: "Alle Rollen anzeigen"
       show:
         action: "Rollen-Details anzeigen"
@@ -54,7 +91,7 @@ de:
       one: "Benutzer"
       other: "Benutzer"
       index:
-        title: "Alle Benutzer"
+        title: "Benutzer-Übersicht"
         action: "Alle Benutzer anzeigen"
       show:
         action: Benutzer-Details anzeigen

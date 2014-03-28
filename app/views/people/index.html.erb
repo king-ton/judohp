@@ -1,0 +1,24 @@
+<% provide(:title, t('views.person.index.title')) %>
+<% provide(:sidebar, 'member') %>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th><%= t('activerecord.attributes.person.last_name') %></th>
+			<th><%= t('activerecord.attributes.person.first_name') %></th>
+			<th><%= t('activerecord.attributes.person.gender') %></th>
+			<th><%= t('activerecord.attributes.person.birth_date') %></th>
+			<th><%= t('activerecord.attributes.person.birth_place') %></th>
+			<th><%= t('activerecord.attributes.person.street') %></th>
+			<th><%= t('activerecord.attributes.person.zip') %></th>
+			<th><%= t('activerecord.attributes.person.city') %></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody class="person-index">
+		<%= render 'index' %>
+	</tbody>
+</table>
