@@ -72,7 +72,8 @@ de:
       edit:
         title: "Rolle bearbeiten"
         action: "Rolle aktualisieren"
-      destroy:
+      delete:
+        title: "Rolle löschen"
         action: "Rolle löschen"
       msg:
         created: "Die Rolle wurde erfolgreich erstellt."
@@ -101,7 +102,8 @@ de:
       new:
         title: "Neuer Benutzer"
         action: "Benutzer erstellen"
-      destroy:
+      delete:
+        title: "Benutzer löschen"
         action: "Benutzer löschen"
       self:
         action: "Eigenes Profil bearbeiten"

@@ -1,0 +1,10 @@
+<div class="panel-heading">
+	<h3 class="panel-title"> <%= t('views.role', count: 2) %>
+	<%= link_to raw("<span class='glyphicon glyphicon-plus green pull-right'></span>"), new_role_path, remote: true %> </h3>
+
+</div>
+<div id="role-list" class="panel-body">
+	<%= f.collection_check_boxes :role_ids, Role.all, :id, :name, {:item_wrapper_tag => :div, :item_wrapper_class => 'checkbox'} do |b| %>
+	<% b.label(:class => 'control-label') { b.check_box + b.text } %>
+	<% end %>
+</div>

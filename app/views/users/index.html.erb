@@ -12,15 +12,7 @@
 		</tr>
 	</thead>
 
-	<tbody>
-		<% @users.each do |user| %>
-		<tr>
-			<td><%= user.name %></td>
-			<td><%= user.email %></td>
-			<td><%= link_to raw("<span class='glyphicon glyphicon-th-list'></span>"), user %></td>
-			<td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_user_path(user) %></td>
-			<td><%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"),  user, method: :delete, data: { confirm: t('views.are_you_sure') } %></td>
-		</tr>
-		<% end %>
+	<tbody class="user-index" >
+		<%= render 'index' %>
 	</tbody>
 </table>

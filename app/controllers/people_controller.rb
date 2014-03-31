@@ -23,9 +23,10 @@ class PeopleController < ApplicationController
   # POST /people
   def create
     respond_to do |format|
-      @people = Person.all
-      format.js { @person = Person.create(person_params) }
-
+      format.js do
+        @people = Person.all
+        @person = Person.create(person_params)
+      end
       format.html do
         @person = Person.new(person_params)
 

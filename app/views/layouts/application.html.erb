@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		
-		<% if controller?('people') && action?('index') %>
+		<% if controller?('people', 'users', 'roles') && action?('index') %>
 		<div id="<%= params[:controller].singularize %>-modal" class="modal fade"></div>
 		<% end %>
 	</body>

@@ -48,13 +48,24 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  def destroy
-    if @user.destroy
-      flash[:success] = t('views.user.msg.destroyed')
-    end
-    redirect_to users_url
+  def delete
+    @user = User.find(params[:user_id])
   end
+
+  # DELETE /roles/1
+  def destroy
+    @users = User.all
+    @user = User.find(params[:id])
+    @user.destroy
+  end
+
+  # DELETE /users/1
+  #def destroy
+   # if @user.destroy
+    #  flash[:success] = t('views.user.msg.destroyed')
+   # end
+    #redirect_to users_url
+  #end
 
   private
 

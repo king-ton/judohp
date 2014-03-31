@@ -9,10 +9,14 @@ Judohp::Application.routes.draw do
     end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :roles, :path => I18n.t('activerecord.models.role').downcase
+    resources :roles, :path => I18n.t('activerecord.models.role').downcase do
+      get "delete"
+    end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :users, :path => I18n.t('activerecord.models.user').downcase
+    resources :users, :path => I18n.t('activerecord.models.user').downcase do
+      get "delete"
+    end
   end
   resources :sessions, only: [:new, :create, :destroy]
 

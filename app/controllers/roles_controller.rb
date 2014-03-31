@@ -24,12 +24,21 @@ class RolesController < ApplicationController
 
   # POST /roles
   def create
-    @role = Role.new(role_params)
-    if @role.save
-      flash[:success] = t('views.role.msg.created')
-      redirect_to @role
-    else
-      render action: 'new'
+    respond_to do |format|
+      format.js do
+        @roles = Role.all
+        @role = Role.create(role_params)
+      end
+
+      format.html do
+        @role = Role.new(role_params)
+        if @role.save
+          flash[:success] = t('views.role.msg.created')
+          redirect_to @role
+        else
+          render action: 'new'
+        end
+      end
     end
   end
 
@@ -43,10 +52,15 @@ class RolesController < ApplicationController
     end
   end
 
+  def delete
+    @role = Role.find(params[:role_id])
+  end
+
   # DELETE /roles/1
   def destroy
+    @roles = Role.all
+    @role = Role.find(params[:id])
     @role.destroy
-    redirect_to roles_url
   end
 
   private

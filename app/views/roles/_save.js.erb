@@ -1,0 +1,9 @@
+$("ul.errors").html("")
+<% if @role.errors.any? %>
+	<% @role.errors.full_messages.each do |message| %>
+		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+	<% end %>
+<% else %>
+	$("#role-list input:last").before("<div class='checkbox'><label class='control-label' for='user_role_ids_<%= @role.id %>'><input id='user_role_ids_<%= @role.id %>' type='checkbox' value='<%= @role.id %>' name='user[role_ids][]'></input><%= @role.name %></label></div>")
+	$("#role-modal").modal("hide")
+<% end %>
