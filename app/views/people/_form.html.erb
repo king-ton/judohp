@@ -30,8 +30,10 @@
 		</div>
 	</div>
 </div>
+
 <div class="row" >
 	<div class="col-md-6">
+		<hr />
 		<div class="form-group">
 			<%= f.input :street, input_html: { class: 'form-control' } %>
 		</div>
@@ -49,6 +51,25 @@
 		</div>
 	</div>
 </div>
+
+<div class="row" >
+	<div class="col-md-6">
+		<hr />
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> <%= t('views.contact', count: 1) %>
+				<%= link_to_add_fields f, :contacts %> </h3>
+			</div>
+			<div id="contacts-list" class="panel-body">
+				<%= f.simple_fields_for :contacts do |contact| %>
+				<%= render 'contact_fields', :f => contact %>
+				<% end %>
+			</div>
+		</div>
+		<hr />
+	</div>
+</div>
+
 <div class="row" >
 	<div class="col-md-3">
 		<div class="form-group">
@@ -57,7 +78,7 @@
 	</div>
 </div>
 
-<%= f.button :submit,  :class => 'btn btn-success' %>
+<%= f.submit t('views.contact.edit.action'), :class => 'btn btn-success' %>
 
 <% end %>
 

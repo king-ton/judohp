@@ -1,7 +1,4 @@
 Judohp::Application.routes.draw do
-  #resources :people do
-   # get "delete"
-  #end
   
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
     resources :people, :path => I18n.t('activerecord.models.person').downcase do

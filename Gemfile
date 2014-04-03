@@ -77,4 +77,11 @@ gem 'bcrypt-ruby'
 # Authorization-Gem
 gem 'pundit'
 
+####################
+# Formulare
+
+# Vereinfacht die erzeugung von Formularen
 gem 'simple_form'
+
+# Hilfe für Nested Forms
+#gem 'cocoon'

@@ -4,14 +4,13 @@ describe "Benutzer-Seite" do
 
   subject { page }
 
+  let(:admin) { FactoryGirl.create(:admin) }
+
   describe "Benutzer-Übersicht" do
-
-    let(:user) { FactoryGirl.create(:user) }
-    let(:admin) { FactoryGirl.create(:admin) }
-
+ 
     before(:each) do
+      FactoryGirl.create(:user)
       sign_in admin
-      visit user_path(user)
       visit users_path
     end
 
@@ -29,6 +28,7 @@ describe "Benutzer-Seite" do
         sign_in user
         visit users_path
       end
+      
 
       it { should_not have_title(I18n.t('views.user.index.title')) }
       it { should have_title(I18n.t('views.session.new.title')) }

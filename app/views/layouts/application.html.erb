@@ -14,13 +14,13 @@
 
 			<div class="row">
 				<% if policy(User.new).index? || policy(Role.new).index? %>
-				<div class="col-md-2 sidebar">
+				<div class="col-md-2 col-xs-2 sidebar">
 					<%= render "layouts/sidebar_#{yield(:sidebar)}" if yield(:sidebar) != ""%>
 				</div>
 				<% else %>
 				<% provide(:sidebar, '') %>
 				<% end %>
-				<div class="col-md-<%= yield(:sidebar) != "" ? "10" : "12" %>">
+				<div class="col-md-<%= yield(:sidebar) != "" ? "10" : "12" %> col-xs-<%= yield(:sidebar) != "" ? "10" : "12" %>">
 
 					<%= render 'layouts/action_links'%>
 

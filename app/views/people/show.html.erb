@@ -2,48 +2,63 @@
 <% provide(:sidebar, 'member') %>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.last_name') %>:</strong>
-  <%= @person.last_name %>
+	<strong><%= t('activerecord.attributes.person.last_name') %>:</strong>
+	<%= @person.last_name %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.first_name') %>:</strong>
-  <%= @person.first_name %>
+	<strong><%= t('activerecord.attributes.person.first_name') %>:</strong>
+	<%= @person.first_name %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.gender') %>:</strong>
-  <%= @person.gender ? t('gender.male') : t('gender.female') %>
+	<strong><%= t('activerecord.attributes.person.gender') %>:</strong>
+	<%= @person.gender ? t('gender.male') : t('gender.female') %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.birth_date') %>:</strong>
-  <%= l @person.birth_date %>
+	<strong><%= t('activerecord.attributes.person.birth_date') %>:</strong>
+	<%= l @person.birth_date %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.birth_place') %>:</strong>
-  <%= @person.birth_place %>
+	<strong><%= t('activerecord.attributes.person.birth_place') %>:</strong>
+	<%= @person.birth_place %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.street') %>:</strong>
-  <%= @person.street %>
+	<strong><%= t('activerecord.attributes.person.street') %>:</strong>
+	<%= @person.street %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.zip') %>:</strong>
-  <%= "%05d" % @person.zip if @person.zip != nil %>
+	<strong><%= t('activerecord.attributes.person.zip') %>:</strong>
+	<%= "%05d" % @person.zip if @person.zip != nil %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.attributes.person.city') %>:</strong>
-  <%= @person.city %>
+	<strong><%= t('activerecord.attributes.person.city') %>:</strong>
+	<%= @person.city %>
 </p>
 
 <% if @person.user != nil %>
 <p>
-  <strong><%= t('activerecord.models.user') %>:</strong>
-  <%= @person.user.name %>
+	<strong><%= t('activerecord.models.user') %>:</strong>
+	<%= @person.user.name %>
 </p>
 <% end %>
+
+<div class="row">
+	<% @person.contacts.each do |c| %>
+	<div class="col-md-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= c.name %></h3>
+			</div>
+			<div class="panel-body">
+				<%= c.number %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>

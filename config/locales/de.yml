@@ -6,6 +6,9 @@ de:
       role: "Rollen"
       user: "Benutzer"
     attributes:
+      contact:
+        name: "Bezeichnung"
+        number: "Telefon-Nummer"
       person:
         last_name: "Nachname"
         first_name: "Vorname"
@@ -34,6 +37,10 @@ de:
     back: "Zurück"
     cancel: "Abbrechen"
     edit: "Bearbeiten"
+    contact:
+      one: Kontakt-Daten
+      edit:
+        action: "Person aktualisieren"
     member:
       one: "Mitglied"
       other: "Mitglieder"
