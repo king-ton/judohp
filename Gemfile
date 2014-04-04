@@ -25,8 +25,17 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+####################
+# JavaScript
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Sortierbare Tabellen
+gem 'jquery-tablesorter'
+
+# Auswahl Datum
+gem 'bootstrap-datepicker-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -53,13 +62,13 @@ end
 # Tests
 
 # Benutze RSpec als Test-Framework
-gem 'rspec-rails', group: [:development, :test]
+gem 'rspec-rails', group: [:test]
 
 # Simuliere Benutzer
-gem 'capybara', group: [:development, :test]
+gem 'capybara', group: [:test]
 
 # Erzeuge Datensätze nach bestimmten Muster
-gem 'factory_girl_rails', group: [:development, :test]
+gem 'factory_girl_rails', group: [:test]
 
 
 ####################
@@ -85,3 +94,17 @@ gem 'simple_form'
 
 # Hilfe für Nested Forms
 #gem 'cocoon'
+
+####################
+# CI
+
+# Gem für Jenkins
+gem 'ci_reporter', group: [:test]
+
+# Findet Sicherheitslücken
+gem 'brakeman', group: [:test]
+
+# Test-Abdeckung
+gem 'simplecov', group: [:test]
+gem 'simplecov-rcov', group: [:test]
+

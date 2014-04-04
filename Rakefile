@@ -4,3 +4,13 @@
 require File.expand_path('../config/application', __FILE__)
 
 Judohp::Application.load_tasks
+
+# ci-reporter
+require 'ci/reporter/rake/rspec'     # use this if you're using RSpec
+
+
+# SimpleCov
+require 'simplecov'
+require 'simplecov-rcov'
+SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+SimpleCov.start 'rails'
