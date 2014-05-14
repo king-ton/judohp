@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417190434) do
+ActiveRecord::Schema.define(version: 20140514181144) do
+
+  create_table "competition_templates", force: true do |t|
+    t.string   "title"
+    t.string   "short_name"
+    t.integer  "venue_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competitions", force: true do |t|
+    t.string   "title"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "venue_id"
+    t.integer  "competition_template_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contacts", force: true do |t|
     t.integer  "person_id"
@@ -80,5 +98,14 @@ ActiveRecord::Schema.define(version: 20140417190434) do
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+
+  create_table "venues", force: true do |t|
+    t.string   "name"
+    t.string   "street"
+    t.integer  "zip"
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

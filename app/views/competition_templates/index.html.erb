@@ -1,0 +1,29 @@
+<h1>Listing competition_templates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Short name</th>
+      <th>Venue</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competition_templates.each do |competition_template| %>
+      <tr>
+        <td><%= competition_template.title %></td>
+        <td><%= competition_template.short_name %></td>
+        <td><%= competition_template.venue_id %></td>
+        <td><%= link_to 'Show', competition_template %></td>
+        <td><%= link_to 'Edit', edit_competition_template_path(competition_template) %></td>
+        <td><%= link_to 'Destroy', competition_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Competition template', new_competition_template_path %>

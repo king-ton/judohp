@@ -71,6 +71,7 @@ gem 'factory_girl_rails', group: [:test]
 gem 'guard-rspec', group: [:test]
 gem 'spring-commands-rspec', group: [:test, :development]
 
+gem 'database_cleaner', group: [:test]
 
 ####################
 # Development

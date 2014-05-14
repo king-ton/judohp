@@ -5,7 +5,7 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
 
-    factory :member do
+    factory :user_member do
       roles { [FactoryGirl.create(:role_member)]}
     end
     factory :admin do
@@ -14,17 +14,19 @@ FactoryGirl.define do
   end
 
   factory :role do
-    name "Standardrolle"
+    name "Standard-Rolle"
 
     factory :role_admin do
       name "Admin"
-      activities ["user:index", "user:show", "user:create", "user:update", "user:delete",
-              "role:index", "role:show", "role:create", "role:update", "role:delete",
-              "person:index", "person:show", "person:create", "person:update", "person:delete"]
+      activities { ["user:index", "user:show",    "user:create",    "user:update",    "user:delete",
+      "role:index",     "role:show",    "role:create",    "role:update",    "role:delete",
+      "person:index",   "person:show",  "person:create",  "person:update",  "person:delete",
+      "member:index",   "member:show",  "member:create",  "member:update",  "member:delete"] }
     end
+
     factory :role_member do
       name "Mitglied"
-      activities ["user:self"]
+      activities { ["user:self"] }
     end
   end
 end

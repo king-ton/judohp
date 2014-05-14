@@ -13,42 +13,42 @@
 		<div class="container-fluid">
 
 			<div class="row">
-				<% if (yield(:sidebar) == "user" && (policy(User.new).index? || policy(Role.new).index?)) || (yield(:sidebar) == "member" && (policy(Member.new).index? || policy(Person.new).index?)) %>
+				<% if !((side = yield(:sidebar_disable) == true ? nil : sidebar) == nil) %>
 				<div class="col-md-2 col-xs-2">
 					<div class="row">
 						<div class="col-md-2 sidebar">
-							<%= render "layouts/sidebar_#{yield(:sidebar)}" if yield(:sidebar) != ""%>
+							<%= render "layouts/sidebar_#{side}" %>
 						</div>
 					</div>
 				</div>
-				<% else %>
-				<% provide(:sidebar, '') %>
-				<% end %>
-				<div class="col-md-<%= yield(:sidebar) != "" ? "10" : "12" %> col-xs-<%= yield(:sidebar) != "" ? "10" : "12" %>">
+				<div class="col-md-10 col-xs-10">
+					<% else %>
+					<div class="col-md-12 col-xs-12">
+						<% end %>
 
-					<%= render 'layouts/action_links'%>
+						<%= render 'layouts/action_links'%>
 
-					<h1 class="page-header"><%= yield(:headline) != "" ? yield(:headline) : yield(:title )%></h1>
+						<h1 class="page-header"><%= yield(:headline) != "" ? yield(:headline) : yield(:title )%></h1>
 
-					<% flash.each do |key, value| %>
-					<div class="alert alert-<%= key %> alert-dismissable fade in">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-							&times;
-						</button>
-						<%= value %>
+						<% flash.each do |key, value| %>
+						<div class="alert alert-<%= key %> alert-dismissable fade in">
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								&times;
+							</button>
+							<%= value %>
+						</div>
+						<% end %>
+
+						<%= yield %>
+
+						<%= render 'layouts/footer' %>
+						<%= debug(params) if Rails.env.development? %>
 					</div>
-					<% end %>
-
-					<%= yield %>
-
-					<%= render 'layouts/footer' %>
-					<%= debug(params) if Rails.env.development? %>
 				</div>
 			</div>
-		</div>
 
-		<% if controller?('people', 'users', 'roles') && action?('index') %>
-		<div id="<%= params[:controller].singularize %>-modal" class="modal fade"></div>
-		<% end %>
+			<% if controller?('people', 'users', 'roles') && action?('index') %>
+			<div id="<%= params[:controller].singularize %>-modal" class="modal fade"></div>
+			<% end %>
 	</body>
 </html>

@@ -10,7 +10,7 @@
 #
 
 class Role < ActiveRecord::Base
-  before_save { self.activities = self.activities.reject! { |a| a.empty? }}
+  before_save { self.activities.reject! { |a| a.empty? }}
   
   has_and_belongs_to_many :users
   

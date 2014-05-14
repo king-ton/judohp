@@ -1,23 +1,42 @@
 Judohp::Application.routes.draw do
-  
+
+  match '/home',  to: 'static_pages#home', via: :get
+
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :members, :path => I18n.t('activerecord.models.member').downcase do
+    resources :competitions, :path => I18n.t('views.competition.short') do
       get "delete"
     end
   end
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :people, :path => I18n.t('activerecord.models.person').downcase do
+    resources :competition_templates, :path => I18n.t('views.competition_template.short') do
+      get "delete"
+    end
+  end
+
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+    resources :members, :path => I18n.t('views.member.short') do
+      get "delete"
+    end
+  end
+
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+    resources :people, :path => I18n.t('views.person.short') do
       get "delete"
     end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :roles, :path => I18n.t('activerecord.models.role').downcase do
+    resources :roles, :path => I18n.t('views.role.short') do
       get "delete"
     end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase, :delete => I18n.t('views.delete').downcase  }) do
-    resources :users, :path => I18n.t('activerecord.models.user').downcase do
+    resources :users, :path => I18n.t('views.user.short') do
+      get "delete"
+    end
+  end
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase, :delete => I18n.t('views.delete').downcase  }) do
+    resources :venues, :path => I18n.t('views.venue.short') do
       get "delete"
     end
   end
@@ -25,14 +44,14 @@ Judohp::Application.routes.draw do
 
   match I18n.t('views.session.new.action').downcase, to: 'sessions#new', via: :get, as: 'signin'
   match I18n.t('views.session.destroy.action').downcase, to: 'sessions#destroy', via: :delete, as: 'signout'
-  
+
   match "/#{I18n.t('activerecord.models.user').downcase}/#{I18n.t('views.user.activate.title').downcase}/:activation_token", to: 'users#activate', via: :get, as: 'activate'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'users#index'
+  root 'static_pages#home'
 
 # Example of regular route:
 #   get 'products/:id' => 'catalog#view'

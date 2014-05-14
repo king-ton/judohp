@@ -21,6 +21,11 @@
 					<%= link_to t("activerecord.models.member"), members_path %>
 				</li>
 				<% end %>
+				<% if policy(Venue.new).index? || policy(CompetitionTemplate.new).index? || policy(Competition.new).index? %>
+				<li <%= 'class=active' if controller?("venues", "competition_templates", "competition")%>>
+					<%= link_to t("activerecord.models.competition"), competitions_path %>
+				</li>
+				<% end %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 

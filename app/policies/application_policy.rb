@@ -12,7 +12,7 @@ class ApplicationPolicy
   
   # Definiert Format einer Aktivität
   def inferred_activity(method)
-    "#{@record.class.name.downcase}:#{method.to_s}"
+    "#{@record.class.model_name.singular}:#{method.to_s}"
   end
 
   # Methode für Record nicht vorhanden

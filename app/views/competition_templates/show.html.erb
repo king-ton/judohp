@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @competition_template.title %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @competition_template.short_name %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @competition_template.venue_id %>
+</p>
+
+<%= link_to 'Edit', edit_competition_template_path(@competition_template) %> |
+<%= link_to 'Back', competition_templates_path %>

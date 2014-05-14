@@ -71,14 +71,18 @@ class RolesController < ApplicationController
   end
 
   def set_act
-    @act = @role.activities.group_by { |act| act[/([a-z]+)\:[a-z]+/, 1] }
+    @act = @role.activities.group_by { |act| act[/(([a-z]|[_])+)\:[a-z]+/, 1] }
   end
 
   def set_acts
-    @acts = ["user:index",    "user:show",    "user:new",   "user:edit",    "user:delete",
-             "role:index",    "role:show",    "role:new",   "role:edit",    "role:delete",
-             "person:index",  "person:show",  "person:new", "person:edit",  "person:delete"]
-             .group_by { |act| act[/([a-z]+)\:[a-z]+/, 1] }
+    @acts = [ "competition:index",          "competition:show",           "competition:new",          "competition:edit",           "competition:delete",
+              "competition_template:index", "competition_template:show",  "competition_template:new", "competition_template:edit",  "competition_template:delete",
+              "user:index",                 "user:show",                  "user:new",                 "user:edit",                  "user:delete",
+              "role:index",                 "role:show",                  "role:new",                 "role:edit",                  "role:delete",
+              "person:index",               "person:show",                "person:new",               "person:edit",                "person:delete",
+              "member:index",               "member:show",                "member:new",               "member:edit",                "member:delete",
+              "venue:index",                "venue:show",                 "venue:new",                "venue:edit",                 "venue:delete"]
+             .group_by { |act| act[/(([a-z]|[_])+)\:[a-z]+/, 1] }
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

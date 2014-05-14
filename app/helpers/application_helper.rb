@@ -78,4 +78,20 @@ module ApplicationHelper
       end
     end
   end
+
+  def sidebar
+    if controller?("users", "roles")
+      if policy(User.new).index? || policy(Role.new).index?
+        "user"
+      end
+    elsif controller?("members", "people")
+      if policy(Member.new).index? || policy(Person.new).index?
+        "member"
+      end
+    elsif controller?("venues", "competition_templates", "competitions")
+      if policy(Venue.new).index? || policy(CompetitionTemplate.new) || policy(Competition.new)
+        "competition"
+      end
+    end
+  end
 end
