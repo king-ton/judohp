@@ -1,2 +1,6 @@
+if ($("#role-modal").length == 0) {
+	$(document.body).append('<div id="role-modal" class="modal fade"></div>');
+}
+
 $("#role-modal").html("<%= escape_javascript(render 'new') %>")
 $("#role-modal").modal("show")

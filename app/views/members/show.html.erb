@@ -1,0 +1,44 @@
+<% provide(:title, @member.person.name ) %>
+<% provide(:sidebar, 'member') %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.member_number') %>:</strong>
+  <%= @member.member_number %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.entry') %>:</strong>
+  <%= l @member.entry %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.exit') %>:</strong>
+  <%= l @member.exit if @member.exit %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.entry_federation') %>:</strong>
+  <%= l @member.entry_federation if @member.entry_federation %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.exit_federation') %>:</strong>
+  <%= l @member.exit_federation if @member.exit_federation %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.person') %>:</strong>
+  <%= link_to @member.person.name, person_path(@member.person) %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.dad') %>:</strong>
+  <%= @member.dad.name if @member.dad %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.member.mum') %>:</strong>
+  <%= @member.mum.name if @member.mum %>
+</p>

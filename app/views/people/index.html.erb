@@ -1,7 +1,7 @@
 <% provide(:title, t('views.person.index.title')) %>
 <% provide(:sidebar, 'member') %>
 
-<table class="table table-striped">
+<table class="table table-striped tablesorter">
 	<thead>
 		<tr>
 			<th><%= t('activerecord.attributes.person.last_name') %></th>
@@ -12,9 +12,6 @@
 			<th><%= t('activerecord.attributes.person.street') %></th>
 			<th><%= t('activerecord.attributes.person.zip') %></th>
 			<th><%= t('activerecord.attributes.person.city') %></th>
-			<th></th>
-			<th></th>
-			<th></th>
 		</tr>
 	</thead>
 

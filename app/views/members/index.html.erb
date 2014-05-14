@@ -1,0 +1,18 @@
+<% provide(:title, t('views.member.index.title')) %>
+<% provide(:sidebar, 'member') %>
+
+<table class="table table-striped tablesorter">
+	<thead>
+		<tr>
+			<th><%= t('activerecord.attributes.member.member_number') %></th>
+			<th><%= t('activerecord.attributes.person.name') %></th>
+			<th><%= t('activerecord.attributes.member.entry') %></th>
+			<th><%= t('activerecord.attributes.member.exit') %></th>
+		</tr>
+	</thead>
+
+	<tbody class="person-index">
+		<%= render 'index' %>
+	</tbody>
+</table>
+

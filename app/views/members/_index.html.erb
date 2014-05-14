@@ -1,0 +1,14 @@
+<% allow_show = policy(Member.new).show? %>
+<% allow_edit = policy(Member.new).edit? %>
+<% allow_delete = policy(Member.new).delete? %>
+<% @members.each do |member| %>
+<tr>
+	<td><%= member.member_number %></td>
+	<td><%= member.person.name %></td>
+	<td><%= l(member.entry) %></td>
+	<td><%= l(member.exit) if member.exit != nil %></td>
+	<%= link_to_show member, :wrap => 'td', :allow => allow_show %>
+	<%= link_to_edit member, :wrap => 'td', :allow => allow_edit %>
+	<%= link_to_delete member, :wrap => 'td', :allow => allow_delete %>
+</tr>
+<% end %>

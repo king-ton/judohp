@@ -1,0 +1,6 @@
+if ($("#user-modal").length == 0) {
+	$(document.body).append('<div id="user-modal" class="modal fade"></div>');
+}
+
+$("#user-modal").html("<%= escape_javascript(render 'new') %>")
+$("#user-modal").modal("show")

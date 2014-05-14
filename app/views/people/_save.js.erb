@@ -4,6 +4,12 @@ $("ul.errors").html("")
 		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
 	<% end %>
 <% else %>
-	$(".person-index").html("<%= escape_javascript(render 'index') %>")
+	<% if action?('create')%>
+		$('#member_person_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
+		$('#member_mum_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
+		$('#member_dad_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
+		$('#member_' + focused + '_id option:last-child').attr("selected",true)
+		selectChanged(focused)
+	<% end %>
 	$("#person-modal").modal("hide")
 <% end %>

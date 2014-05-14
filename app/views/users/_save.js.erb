@@ -4,6 +4,12 @@ $("ul.errors").html("")
 		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
 	<% end %>
 <% else %>
-	$("#user-list input:last").before("<div class='checkbox'><label class='control-label' for='user_role_ids_<%= @role.id %>'><input id='user_role_ids_<%= @role.id %>' type='checkbox' value='<%= @role.id %>' name='user[role_ids][]'></input><%= @role.name %></label></div>")
-	$("#user-modal").modal("hide")
+	<% if action?('create')%>
+		$('#person_user_id').append($("<option />").html("<%= @user.name %>").attr("value", <%= @person.id %>))
+		$('#member_mum_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
+		$('#member_dad_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
+		$('#member_' + focused + '_id option:last-child').attr("selected",true)
+		selectChanged(focused)
+	<% end %>
+	$("#user-modal").remove()
 <% end %>

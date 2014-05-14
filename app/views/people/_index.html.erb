@@ -1,15 +1,24 @@
+<% allow_show = policy(Person.new).show? %>
+<% allow_edit = policy(Person.new).edit? %>
+<% allow_delete = policy(Person.new).delete? %>
 <% @people.each do |person| %>
 <tr>
 	<td><%= person.last_name %></td>
 	<td><%= person.first_name %></td>
-	<td><%= person.gender ? t('gender.male') : t('gender.female') %></td>
-	<td><%= l(person.birth_date, format: :default) %></td>
+	<td>
+		<% if person.gender == true %>
+		<%= t('gender.male') %>
+		<% elsif person.gender == false %>
+		<%= t('gender.female') %>
+		<% end %>
+	</td>
+	<td><%= l(person.birth_date, format: :default) if person.birth_date %></td>
 	<td><%= person.birth_place %></td>
 	<td><%= person.street %></td>
 	<td><%= "%05d" % person.zip if person.zip != nil %></td>
 	<td><%= person.city %></td>
-	<td><%= link_to raw("<span class='glyphicon glyphicon-th-list'></span>"), person %></td>
-	<td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_person_path(person) %></td>
-	<td><%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"),  person_delete_path(person), remote: true %></td>
+	<%= link_to_show person, :wrap => 'td', :allow => allow_show %>
+	<%= link_to_edit person, :wrap => 'td', :allow => allow_edit %>
+	<%= link_to_delete person, :wrap => 'td', :allow => allow_delete %>
 </tr>
 <% end %>

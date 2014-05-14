@@ -18,9 +18,9 @@ FactoryGirl.define do
 
     factory :role_admin do
       name "Admin"
-      activities ["user:index", "user:show", "user:create", "user:update", "user:destroy",
-              "role:index", "role:show", "role:create", "role:update", "role:destroy",
-              "person:index", "person:show", "person:create", "person:update", "person:destroy"]
+      activities ["user:index", "user:show", "user:create", "user:update", "user:delete",
+              "role:index", "role:show", "role:create", "role:update", "role:delete",
+              "person:index", "person:show", "person:create", "person:update", "person:delete"]
     end
     factory :role_member do
       name "Mitglied"

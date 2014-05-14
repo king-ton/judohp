@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401135940) do
+ActiveRecord::Schema.define(version: 20140417190434) do
 
   create_table "contacts", force: true do |t|
     t.integer  "person_id"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 20140401135940) do
   end
 
   add_index "contacts", ["person_id"], name: "index_contacts_on_person_id", using: :btree
+
+  create_table "members", force: true do |t|
+    t.string   "member_number"
+    t.date     "entry"
+    t.date     "exit"
+    t.date     "entry_federation"
+    t.date     "exit_federation"
+    t.integer  "person_id"
+    t.integer  "dad_id"
+    t.integer  "mum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "members", ["member_number"], name: "index_members_on_member_number", using: :btree
+  add_index "members", ["person_id"], name: "index_members_on_person_id", using: :btree
 
   create_table "people", force: true do |t|
     t.string   "last_name"
@@ -35,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140401135940) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nationality"
   end
 
   create_table "roles", force: true do |t|
@@ -56,8 +73,11 @@ ActiveRecord::Schema.define(version: 20140401135940) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.string   "activation_token"
+    t.boolean  "activated"
   end
 
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 

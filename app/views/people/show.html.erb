@@ -18,7 +18,7 @@
 
 <p>
 	<strong><%= t('activerecord.attributes.person.birth_date') %>:</strong>
-	<%= l @person.birth_date %>
+	<%= l @person.birth_date if @person.birth_date %>
 </p>
 
 <p>

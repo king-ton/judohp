@@ -11,10 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
+//= require jquery-tablesorter
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.de.js
 //= require turbolinks
-//= require_tree .
 //= require bootstrap
+//= require_tree .
 
 function add_fields(association, content) {
 	var new_id = new Date().getTime();
@@ -25,4 +29,35 @@ function add_fields(association, content) {
 function remove_fields(link) {
 	$(link).prev("input[type=hidden]").val("1");
 	$(link).closest(".row").hide();
+}
+
+function selectChanged(sel, model) {
+	var value = $('#' + model + '_' + sel + '_id option:selected').val();
+	var a_href = $('.' + sel + '-edit').attr('href');
+	var number = a_href.match(/[0-9]+/g);
+	a_href = a_href.replace(number, value);
+
+	if (value == "") {
+		$('.' + sel + '-edit').addClass('hidden');
+	} else {
+		$('.' + sel + '-edit').attr('href', a_href);
+		$('.' + sel + '-edit').removeClass('hidden');
+	}
+}
+
+function initMonthlyDatePicker() {
+	$('.input-group.date.month').datepicker({
+		format : "dd.mm.yyyy",
+		minViewMode : 1,
+		language : "de",
+		autoclose : true
+	});
+}
+
+function initDatePicker() {
+	$('.input-group.date').datepicker({
+		format : "dd.mm.yyyy",
+		language : "de",
+		autoclose : true
+	});
 }

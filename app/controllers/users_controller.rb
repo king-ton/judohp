@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action except: [:show, :edit, :update] do
+  before_action except: [:show, :edit, :update, :activate] do
     authorize(User.new)
   end
   before_filter :correct_user, only: [:edit, :update]
+  before_filter :skip_password_attribute, only: :update
   #after_action :verify_authorized
 
   # GET /users
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
+      sign_in @user
       flash[:success] = t('views.user.msg.updated')
       redirect_to @user
     else
@@ -57,6 +59,23 @@ class UsersController < ApplicationController
     @users = User.all
     @user = User.find(params[:id])
     @user.destroy
+  end
+  
+  def activate
+    @user = User.find_by_activation_token(params[:activation_token])
+    if @user
+      @user.activated = true
+       if @user.save
+         flash[:success] = t("views.user.activate.success")
+         puts "###########################"
+       else
+         flash[:danger] = "Ein Fehler ist aufgetreten."
+       end
+      
+    else
+      flash[:danger] = t("views.user.activate.error")
+    end
+    redirect_to root_path
   end
 
   # DELETE /users/1
@@ -80,9 +99,14 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-
     if !(policy(User.new).self? && current_user?(@user))
       authorize(User.new)
+    end
+  end
+  
+  def skip_password_attribute
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.except!(:password, :password_confirmation)
     end
   end
 end

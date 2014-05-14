@@ -1,6 +1,12 @@
 Judohp::Application.routes.draw do
   
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+    resources :members, :path => I18n.t('activerecord.models.member').downcase do
+      get "delete"
+    end
+  end
+
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
     resources :people, :path => I18n.t('activerecord.models.person').downcase do
       get "delete"
     end
@@ -10,7 +16,7 @@ Judohp::Application.routes.draw do
       get "delete"
     end
   end
-  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase, :delete => I18n.t('views.delete').downcase  }) do
     resources :users, :path => I18n.t('activerecord.models.user').downcase do
       get "delete"
     end
@@ -19,6 +25,8 @@ Judohp::Application.routes.draw do
 
   match I18n.t('views.session.new.action').downcase, to: 'sessions#new', via: :get, as: 'signin'
   match I18n.t('views.session.destroy.action').downcase, to: 'sessions#destroy', via: :delete, as: 'signout'
+  
+  match "/#{I18n.t('activerecord.models.user').downcase}/#{I18n.t('views.user.activate.title').downcase}/:activation_token", to: 'users#activate', via: :get, as: 'activate'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

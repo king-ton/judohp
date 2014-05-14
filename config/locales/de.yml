@@ -9,10 +9,20 @@ de:
       contact:
         name: "Bezeichnung"
         number: "Telefon-Nummer"
+      member:
+        member_number: "Mitgliedsnummer"
+        entry: "Eintritt"
+        exit: "Austritt"
+        entry_federation: "Eintritt Verband"
+        exit_federation: "Austritt Verband"
+        person: "Person"
+        mum: "Mutter"
+        dad: "Vater"
       person:
         last_name: "Nachname"
         first_name: "Vorname"
         gender: "Geschlecht"
+        nationality: "Nationalität"
         birth_date: "Geburtsdatum"
         birth_place: "Geburtsort"
         street: "Straße"
@@ -27,23 +37,49 @@ de:
         email: "E-Mail"
         password: "Passwort"
         password_confirmation: "Passwort-Bestätigung"
+    errors:
+      models:
+        member:
+          attributes:
+            person_id:
+              blank: "Eine Person muss ausgewählt werden"
+            exit:
+              before_entry: "Austritt darf nicht vor dem Eintritt liegen"
+        person:
+          has_member: "Die Person kann nicht gelöscht werden, da sie teil eines Mitglieds ist."
+          attributes:
+            birth_date:
+              blank: "Muss ausgefüllt werden."
   views:
     index: "Übersicht"
     show: "Anzeigen"
     new: "Neu"
     edit: "Bearbeiten"
-    destroy: "Löschen"
+    delete: "Entfernen"
     are_you_sure: "Wirklich löschen?"
     back: "Zurück"
     cancel: "Abbrechen"
     edit: "Bearbeiten"
     contact:
       one: Kontakt-Daten
-      edit:
-        action: "Person aktualisieren"
     member:
       one: "Mitglied"
       other: "Mitglieder"
+      index:
+        title: "Mitglieder-Übersicht"
+        action: "Alle Mitglieder anzeigen"
+      show:
+        action: "Mitglieder-Details anzeigen"
+      new:
+        title: "Neues Mitglied"
+        action: "Mitglied erstellen"
+      edit:
+        title: "Mitglied bearbeiten"
+        action: "Mitglied aktualisieren"
+      delete:
+        action: "Mitglied löschen"
+      msg:
+        created: "Das Mitglied wurde erfolgreich erstellt."
     person:
       one: "Person"
       other: "Personen"
@@ -112,6 +148,10 @@ de:
       delete:
         title: "Benutzer löschen"
         action: "Benutzer löschen"
+      activate:
+        title: "Aktivieren"
+        success: "Das Benutzer-Konto wurde erfolgreich aktiviert."
+        error: "Kein Benutzer-Konto mit diesem Aktivierungs-Code vorhanden."
       self:
         action: "Eigenes Profil bearbeiten"
       msg:

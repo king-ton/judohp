@@ -1,18 +1,24 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 			<%= link_to raw("<span class='glyphicon glyphicon-chevron-left'></span> Judo-Homepage"), root_path, class: "navbar-brand" %>
 		</div>
-		<div class="navbar-collapse collapse in">
+		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<% if policy(User.new).index? || policy(Role.new).index? %>
 				<li <%= 'class=active' if controller?("users", "roles")%>>
 					<%= link_to t("activerecord.models.user"), users_path %>
 				</li>
 				<% end %>
-				<% if policy(Person.new).index? %>
-				<li <%= 'class=active' if controller?("people")%>>
-					<%= link_to t("activerecord.models.member"), people_path %>
+				<% if policy(Person.new).index? || policy(Member.new).index? %>
+				<li <%= 'class=active' if controller?("people", "members")%>>
+					<%= link_to t("activerecord.models.member"), members_path %>
 				</li>
 				<% end %>
 			</ul>

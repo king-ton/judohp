@@ -1,2 +1,15 @@
+var focused = document.activeElement.id;
 $("#person-modal").html("<%= escape_javascript(render 'new') %>")
 $("#person-modal").modal("show")
+
+$('#person_birth_date').datepicker({
+	format : "dd.mm.yyyy",
+	language : "de",
+	autoclose : true
+});
+
+selectChanged('user', 'person');
+
+$('#person_user_id').change(function() {
+	selectChanged('user', 'person');
+});

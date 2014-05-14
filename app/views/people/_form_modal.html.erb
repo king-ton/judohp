@@ -20,12 +20,16 @@
 				<%= f.input :gender,:as => :select, :collection => [[t('gender.male'),true], [t('gender.female'),false]], input_html: { class: 'form-control' } %>
 			</div>
 		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<%= f.input :nationality, :as => :country, priority: ["DE"], iso_codes: true, input_html: { class: 'form-control' } %>
+				<span class="help-block">Test</span>
+			</div>
+		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
-			</div>
+			<%= render :partial => 'fields/date', :locals => { f: f, model: @person, attr: :birth_date } %>
 		</div>
 		<div class="col-md-6">
 			<div class="form-group">
@@ -54,8 +58,26 @@
 	</div>
 	<div class="row" >
 		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"> <%= f.label :user %>
+					<div class="pull-right">
+						<% if policy(User.new).new? %>
+						<%= link_to raw("<span class='glyphicon glyphicon-plus green'></span>"), new_user_path, remote: true, id: "user" %>
+						<% end %>
+						<% if policy(User.new).edit? %>
+						<%= link_to raw("<span class='glyphicon glyphicon-pencil yellow'></span>"), edit_user_path(1), class: "hidden user-edit", remote: true %>
+						<% end %>
+					</div></h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<%= f.association :user,  input_html: { class: 'form-control' }, label: false %>
+					</div>
+				</div>
+			</div>
 			<div class="form-group">
-				<%= f.association :user, input_html: { class: 'form-control' } %>
+				<%# f.association :user, input_html: { class: 'form-control' } %>
 			</div>
 		</div>
 	</div>

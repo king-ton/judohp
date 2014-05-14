@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.1'
 
 # Benutzer MySQL als Datenbank für Active Record
 gem 'mysql2', '~> 0.3.15'
@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.3.15'
 # Assets
 
 # Benutze SASS für stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.3'
 
 # Bootstrap für Oberfläche
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -20,7 +20,7 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.1'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -28,11 +28,9 @@ gem 'coffee-rails', '~> 4.0.0'
 ####################
 # JavaScript
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-# Sortierbare Tabellen
-gem 'jquery-tablesorter'
+gem 'jquery-rails' # Benutze jQuery als JavaScript-Bibliothek
+gem 'jquery-ui-rails' # Benutze jQuery-UI als JavaScript-Bibliothek
+gem 'jquery-tablesorter' # Sortierbare Tabellen
 
 # Auswahl Datum
 gem 'bootstrap-datepicker-rails'
@@ -41,7 +39,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder'#, '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -62,7 +60,7 @@ end
 # Tests
 
 # Benutze RSpec als Test-Framework
-gem 'rspec-rails', group: [:test]
+gem 'rspec-rails', '>= 2.2', group: [:test]
 
 # Simuliere Benutzer
 gem 'capybara', group: [:test]
@@ -70,9 +68,15 @@ gem 'capybara', group: [:test]
 # Erzeuge Datensätze nach bestimmten Muster
 gem 'factory_girl_rails', group: [:test]
 
+gem 'guard-rspec', group: [:test]
+gem 'spring-commands-rspec', group: [:test, :development]
+
 
 ####################
 # Development
+
+# Lädt Änderungen ohne Neustart
+gem 'spring', group: :development
 
 # Schreibt Felder des Models in Model-Datei
 gem 'annotate', group: :development
@@ -91,6 +95,7 @@ gem 'pundit'
 
 # Vereinfacht die erzeugung von Formularen
 gem 'simple_form'
+gem 'country_select' # Wähle Land aus
 
 # Hilfe für Nested Forms
 #gem 'cocoon'

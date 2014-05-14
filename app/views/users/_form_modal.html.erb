@@ -1,0 +1,58 @@
+<%= simple_form_for(@user, remote: true) do |f| %>
+<div class="modal-body">
+	<ul class="errors"></ul>
+
+	<div class="row" >
+		<div class="col-md-6">
+			<div class="form-group <%= "has-error" if @user.errors[:name].any? %>">
+				<%= f.input :name, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+				<% if @user.errors[:name].any? %>
+				<span class="help-block"><%= @user.errors.full_messages_for(:name).first %></span>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="col-md-6">
+			<div class="form-group <%= "has-error" if @user.errors[:email].any? %>">
+				<%= f.input :email, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+				<% if @user.errors[:email].any? %>
+				<span class="help-block"><%= @user.errors.full_messages_for(:email).first %></span>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="col-md-6">
+			<div class="form-group <%= "has-error" if @user.errors[:password].any? %>">
+				<%= f.input :password, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+				<% if @user.errors[:password].any? %>
+				<span class="help-block"><%= @user.errors.full_messages_for(:password).first %></span>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="col-md-6">
+			<div class="form-group <%= "has-error" if @user.errors[:password_confirmation].any? %>">
+				<%= f.input :password_confirmation, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+				<% if @user.errors[:password_confirmation].any? %>
+				<span class="help-block"><%= @user.errors.full_messages_for(:password_confirmation).first %></span>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row" >
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<%= render 'role_list', :f => f %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<%= f.submit :class => 'btn btn-success' %>
+	<%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+</div>
+
+<% end %>

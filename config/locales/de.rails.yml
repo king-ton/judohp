@@ -96,10 +96,10 @@ de:
       second: Sekunden
       year: Jahr
   errors: &errors
-    format: ! '%{attribute} %{message}'
+    format: ! '%{message}'
     messages:
       accepted: muss akzeptiert werden
-      blank: muss ausgefüllt werden
+      blank: '%{attribute} muss ausgefüllt werden'
       confirmation: stimmt nicht mit der Bestätigung überein
       empty: muss ausgefüllt werden
       equal_to: muss genau %{count} sein

@@ -1,0 +1,15 @@
+<%# f -> Form-Variable %>
+<%# model -> zu welchem Objekt gehört das Attribut %>
+<%# attr -> darzustellendes Attribut %>
+<%# month -> falls definiert, kleinste Darstellung Monat %>
+
+<div class="form-group <%= "has-error" if model.errors[attr].any? %>">
+	<%= f.label attr, class: 'control-label', required: false %>
+	<div class="input-group date <%= 'month' if defined?(month) %>">
+		<%= f.text_field attr, class: 'form-control', value:  (l(f.object[attr]) if f.object[attr]), 'data-behaviour' => 'datepicker' %>
+		<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+	</div>
+	<% if model.errors[attr].any? %>
+	<span class="help-block"><%= model.errors.full_messages_for(attr).first %></span>
+	<% end %>
+</div>

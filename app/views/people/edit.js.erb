@@ -1,2 +1,14 @@
 $("#person-modal").html("<%= escape_javascript(render 'edit') %>")
 $("#person-modal").modal("show")
+
+$('.input-group.date').datepicker({
+	format : "dd.mm.yyyy",
+	language : "de",
+	autoclose : true
+});
+
+selectChanged('user', 'person');
+
+$('#person_user_id').change(function() {
+	selectChanged('user', 'person');
+});

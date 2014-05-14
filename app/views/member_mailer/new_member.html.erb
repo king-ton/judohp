@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	</head>
+	<body>
+		<h1>Herzlich Willkommen bei Testus e.V.,</h1>
+		<p>
+			Hier finden sie ihre Mitgliedsdaten im Überblick:
+			<br>
+				Mitgliedsnummer:	<%= @member.member_number %>
+				Eintritt:			<%= l @member.entry %>
+			
+				Vorname: 			<%= @member.person.first_name %>
+				Nachname:			<%= @member.person.last_name %>
+			
+				Geschlecht:			<%= @member.person.gender %>
+				Nationalität:		<%= @member.person.nationality %>
+			
+				Geburtsdatum:		<%= l @member.person.birth_date %>
+				Geburtsort:			<%= @member.person.birth_place %>
+			
+				Adresse:			<%= @member.person.street %>
+									<%= @member.person.zip %> <%= @member.person.city %>
+		</p>
+		<p>
+			Bitte überprüfen sie die Daten. Bei Fehlern, antworten sie einfach auf diese E-Mail.
+		</p>
+		<p>
+			Weiterhin haben wir für sie ein Benutzer-Konto auf unserer Seite erstellt. Nähere Informationen
+			finden sie in einer weiteren E-Mail, die wir bereits an sie versandt haben.
+		</p>
+		<p>
+			Mit freundlichen Grüßen
+			Der Vorstand des Testus e.V.
+		</p>
+	</body>
+</html>

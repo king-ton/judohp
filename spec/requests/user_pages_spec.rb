@@ -7,11 +7,13 @@ describe "Benutzer-Seite" do
   let(:admin) { FactoryGirl.create(:admin) }
 
   describe "Benutzer-Übersicht" do
- 
+
     before(:each) do
       FactoryGirl.create(:user)
-      sign_in admin
+      sign_in_admin
       visit users_path
+      puts '#################'
+      puts current_path
     end
 
     it { should have_title(I18n.t('views.user.index.title')) }
@@ -28,7 +30,6 @@ describe "Benutzer-Seite" do
         sign_in user
         visit users_path
       end
-      
 
       it { should_not have_title(I18n.t('views.user.index.title')) }
       it { should have_title(I18n.t('views.session.new.title')) }
@@ -108,7 +109,7 @@ describe "Benutzer-Seite" do
       visit user_path(user)
     end
 
-    it { should have_selector('h1', :text => user.name) }
+    it { should have_selector('h1:page-header', :text => user.name) }
     it { should have_title(user.name) }
 
     describe "unberechtigte Nutzer haben keinen Zugriff" do
@@ -153,7 +154,7 @@ describe "Benutzer-Seite" do
       let(:new_name) { "Neuer Name" }
       let(:new_email) { "neu@tonifreitag.de" }
       before do
-        fill_in I18n.t('activerecord.attributes.user.name'), with: new_name
+        fill_in 'user_name', with: new_name
         fill_in I18n.t('activerecord.attributes.user.email'), with: new_email
         fill_in I18n.t('activerecord.attributes.user.password'), with: user.password
         fill_in I18n.t('activerecord.attributes.user.password_confirmation'), with: user.password
@@ -202,9 +203,9 @@ describe "Benutzer-Seite" do
       visit users_path
     end
 
-    # it { should have_selector('a', :href => user_path(user), :id => 'delete') }
+    it { should have_selector('a', :href => user_delete_path(user)) }
     it "soll möglich sein einen anderen Benutzer zu löschen" do
-      expect { find(:xpath, "//a[@href='#{user_path(user)}']").click }.to change(User, :count).by(-1)
+      expect { find(user_delete_path(user)).click }.to change(User, :count).by(-1)
     end
     it "aber man kann sich nicht selber löschen" do
       expect { should_not have_link(I18n.t('views.destroy'), href: user_path(admin)) }

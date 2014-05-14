@@ -1,0 +1,93 @@
+<%= simple_form_for(@member) do |f| %>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="form-group <%= "has-error" if @member.errors[:member_number].any? %>">
+			<%= f.input :member_number, required: false, error: false,  input_html: { class: 'form-control', placeholder: 'z.B. 2014-001' }, label_html: { class: 'control-label' } %>
+			<% if @member.errors[:member_number].any? %>
+			<span class="help-block"><%= @member.errors.full_messages_for(:member_number).first %></span>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group <%= "has-error" if @member.errors[:entry].any? %>">
+			<%= f.label :entry, class: 'control-label', required: false %>
+			<div class="input-group date">
+				<%= f.text_field :entry, class: 'form-control' %>
+				<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+			</div>
+			<% if @member.errors[:entry].any? %>
+			<span class="help-block"><%= @member.errors.full_messages_for(:entry).first %></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"> <%= f.label :person %>
+				<div class="pull-right">
+					<% if policy(Person.new).new? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-plus green'></span>"), new_person_path, remote: true, id: "person" %>
+					<% end %>
+					<% if policy(Person.new).edit? %>	
+					<%= link_to raw("<span class='glyphicon glyphicon-pencil yellow'></span>"), edit_person_path(1), class: "hidden person-edit", remote: true %>
+					<% end %>
+				</div></h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group <%= "has-error" if @member.errors[:person_id].any? %>">
+					<%= f.association :person,  input_html: { class: 'form-control' }, label: false, error: false %>
+					<% if @member.errors[:person_id].any? %>
+					<span class="help-block"><%= @member.errors.full_messages_for(:person_id).first %></span>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"> <%= f.label :mum %>
+				<div class="pull-right">
+					<% if policy(Person.new).new? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-plus green'></span>"), new_person_path, remote: true, id: "mum" %>
+					<% end %>
+					<% if policy(Person.new).edit? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-pencil yellow'></span>"), edit_person_path(1), class: "hidden mum-edit", remote: true %>
+					<% end %>
+				</div></h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.association :mum,  input_html: { class: 'form-control' }, label: false %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"> <%= f.label :dad %>
+				<div class="pull-right">
+					<% if policy(Person.new).new? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-plus green'></span>"), new_person_path, remote: true, id: "dad" %>
+					<% end %>
+					<% if policy(Person.new).edit? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-pencil yellow'></span>"), edit_person_path(1), class: "hidden dad-edit", remote: true %>
+					<% end %>
+				</div></h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<%= f.association :dad,  input_html: { class: 'form-control' }, label: false %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= f.submit t('views.member.new.action'), :class => 'btn btn-success' %>
+<% end %>
+
+<div id="person-modal" class="modal fade"></div>
