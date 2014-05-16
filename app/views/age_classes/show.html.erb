@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @age_class.name %>
+</p>
+
+<p>
+  <strong>Min age:</strong>
+  <%= @age_class.min_age %>
+</p>
+
+<p>
+  <strong>Max age:</strong>
+  <%= @age_class.max_age %>
+</p>
+
+<%= link_to 'Edit', edit_age_class_path(@age_class) %> |
+<%= link_to 'Back', age_classes_path %>

@@ -3,6 +3,12 @@ Judohp::Application.routes.draw do
   match '/home',  to: 'static_pages#home', via: :get
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
+    resources :age_classes, :path => I18n.t('views.age_class.short') do
+      get "delete"
+    end
+  end
+
+  scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
     resources :competitions, :path => I18n.t('views.competition.short') do
       get "delete"
     end

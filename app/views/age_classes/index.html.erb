@@ -1,0 +1,29 @@
+<h1>Listing age_classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Min age</th>
+      <th>Max age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @age_classes.each do |age_class| %>
+      <tr>
+        <td><%= age_class.name %></td>
+        <td><%= age_class.min_age %></td>
+        <td><%= age_class.max_age %></td>
+        <td><%= link_to 'Show', age_class %></td>
+        <td><%= link_to 'Edit', edit_age_class_path(age_class) %></td>
+        <td><%= link_to 'Destroy', age_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Age class', new_age_class_path %>
