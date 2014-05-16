@@ -67,6 +67,23 @@ de:
     back: "Zurück"
     cancel: "Abbrechen"
     edit: "Bearbeiten"
+    age_class:
+      one: "Altersklasse"
+      other: "Altersklassen"
+      short: "altersklassen"
+      index:
+        action: "Alle Altersklassen anzeigen"
+      show:
+        action: Altersklasse-Details anzeigen
+      edit:
+        title: "Altersklasse bearbeiten"
+        action: "Altersklasse aktualisieren"
+      new:
+        title: "Neuer Altersklasse"
+        action: "Altersklasse erstellen"
+      delete:
+        title: "Altersklasse löschen"
+        action: "Altersklasse löschen"
     competition:
       one: "Wettkampf"
       other: "Wettkämpfe"

@@ -1,20 +1,26 @@
 <ul class="nav nav-pills nav-stacked">
-	
+
 	<% if policy(Competition.new).index? %>
 	<li <%= 'class=active' if controller?("competitions")%>>
 		<%= link_to t('views.competition', count: 2), competitions_path %>
 	</li>
 	<% end %>
-		
+
 	<% if policy(CompetitionTemplate.new).index? %>
 	<li <%= 'class=active' if controller?("competition_templates")%>>
 		<%= link_to t('views.competition_template', count: 2), competition_templates_path %>
 	</li>
 	<% end %>
-	
-		<% if policy(Venue.new).index? %>
+
+	<% if policy(Venue.new).index? %>
 	<li <%= 'class=active' if controller?("venues")%>>
 		<%= link_to t('views.venue', count: 2), venues_path %>
+	</li>
+	<% end %>
+	
+	<% if policy(AgeClass.new).index? %>
+	<li <%= 'class=active' if controller?("age_classes")%>>
+		<%= link_to t('views.age_class', count: 2), age_classes_path %>
 	</li>
 	<% end %>
 </ul>

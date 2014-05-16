@@ -75,7 +75,8 @@ class RolesController < ApplicationController
   end
 
   def set_acts
-    @acts = [ "competition:index",          "competition:show",           "competition:new",          "competition:edit",           "competition:delete",
+    @acts = [ "age_class:index",            "age_class:show",             "age_class:new",            "age_class:edit",             "age_class:delete",
+              "competition:index",          "competition:show",           "competition:new",          "competition:edit",           "competition:delete",
               "competition_template:index", "competition_template:show",  "competition_template:new", "competition_template:edit",  "competition_template:delete",
               "user:index",                 "user:show",                  "user:new",                 "user:edit",                  "user:delete",
               "role:index",                 "role:show",                  "role:new",                 "role:edit",                  "role:delete",

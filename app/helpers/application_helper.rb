@@ -88,8 +88,8 @@ module ApplicationHelper
       if policy(Member.new).index? || policy(Person.new).index?
         "member"
       end
-    elsif controller?("venues", "competition_templates", "competitions")
-      if policy(Venue.new).index? || policy(CompetitionTemplate.new) || policy(Competition.new)
+    elsif controller?("venues", "competition_templates", "competitions", "age_classes")
+      if policy(Venue.new).index? || policy(CompetitionTemplate.new) || policy(Competition.new) || policy(AgeClass.new)
         "competition"
       end
     end
