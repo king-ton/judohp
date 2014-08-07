@@ -11,13 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
 //= require jquery-tablesorter
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.de.js
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require_tree .
 
 function add_fields(association, content) {

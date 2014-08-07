@@ -1,19 +1,20 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 
 # Benutzer MySQL als Datenbank für Active Record
-gem 'mysql2', '~> 0.3.15'
+gem 'mysql2', '~> 0.3.16'
 
 ####################
 # Assets
 
-# Benutze SASS für stylesheets
-gem 'sass-rails', '~> 4.0.3'
+# Benutze SASS für Stylesheets
+gem 'sass-rails', '>= 3.2'
 
 # Bootstrap für Oberfläche
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails' # von Bootstrap benoetigt
 
 
 # Use Uglifier as compressor for JavaScript assets
@@ -105,7 +106,7 @@ gem 'country_select' # Wähle Land aus
 # CI
 
 # Gem für Jenkins
-gem 'ci_reporter', group: [:test]
+#gem 'ci_reporter', group: [:test]
 
 # Findet Sicherheitslücken
 gem 'brakeman', group: [:test]

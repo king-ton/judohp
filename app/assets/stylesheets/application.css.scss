@@ -9,10 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require jquery.ui.all
- *= require bootstrap-datepicker
+ *= require jquery-ui
+ * require bootstrap-datepicker
  */
 
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
