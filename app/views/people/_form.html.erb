@@ -20,9 +20,7 @@
 </div>
 <div class="row" >
 	<div class="col-md-3">
-		<div class="form-group">
-			<%= f.input :birth_date, :start_year => Date.today.year - 100, :end_year => Date.today.year %>
-		</div>
+		<%= render :partial => 'fields/date', :locals => { f: f, model: @person, attr: :birth_date } %>
 	</div>
 	<div class="col-md-3">
 		<div class="form-group">
@@ -57,7 +55,7 @@
 		<hr />
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title"> <%= t('views.contact', count: 1) %>
+				<h3 class="panel-title"> <%= t('contact', count: 1) %>
 				<%= link_to_add_fields f, :contacts %> </h3>
 			</div>
 			<div id="contacts-list" class="panel-body">
@@ -78,7 +76,7 @@
 	</div>
 </div>
 
-<%= f.submit t('views.person.' + action + '.action'), :class => 'btn btn-success' %>
+<%= f.submit :class => 'btn btn-success' %>
 
 <% end %>
 

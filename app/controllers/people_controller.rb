@@ -32,7 +32,7 @@ class PeopleController < ApplicationController
         @person = Person.new(person_params)
 
         if @person.save
-          flash[:success] = t('views.person.msg.created')
+          flash[:success] = t('.msg')
           redirect_to @person
         else
           render action: 'new'
@@ -53,7 +53,7 @@ class PeopleController < ApplicationController
 
       format.html do
         if @person.update(person_params)
-          flash[:success] = t('views.person.msg.updated')
+          flash[:success] = t('.msg')
           redirect_to @person
         else
           render action: 'edit'

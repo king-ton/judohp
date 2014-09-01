@@ -3,7 +3,7 @@ Judohp::Application.routes.draw do
   match '/home',  to: 'static_pages#home', via: :get
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :age_classes, :path => I18n.t('views.age_class.short') do
+    resources :age_classes, :path => I18n.t('age_classes.short') do
       get "delete"
     end
   end
@@ -15,43 +15,43 @@ Judohp::Application.routes.draw do
   end
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :competition_templates, :path => I18n.t('views.competition_template.short') do
+    resources :competition_templates, :path => I18n.t('competition_templates.short') do
       get "delete"
     end
   end
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :members, :path => I18n.t('views.member.short') do
+    resources :members, :path => I18n.t('members.short') do
       get "delete"
     end
   end
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :people, :path => I18n.t('views.person.short') do
+    resources :people, :path => I18n.t('people.short') do
       get "delete"
     end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :roles, :path => I18n.t('views.role.short') do
+    resources :roles, :path => I18n.t('roles.short') do
       get "delete"
     end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase, :delete => I18n.t('views.delete').downcase  }) do
-    resources :users, :path => I18n.t('views.user.short') do
+    resources :users, :path => I18n.t('users.short') do
       get "delete"
     end
   end
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase, :delete => I18n.t('views.delete').downcase  }) do
-    resources :venues, :path => I18n.t('views.venue.short') do
+    resources :venues, :path => I18n.t('venues.short') do
       get "delete"
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
 
-  match I18n.t('views.session.new.action').downcase, to: 'sessions#new', via: :get, as: 'signin'
-  match I18n.t('views.session.destroy.action').downcase, to: 'sessions#destroy', via: :delete, as: 'signout'
+  match I18n.t('sessions.new.action').downcase, to: 'sessions#new', via: :get, as: 'signin'
+  match I18n.t('sessions.destroy.action').downcase, to: 'sessions#destroy', via: :delete, as: 'signout'
 
-  match "/#{I18n.t('activerecord.models.user').downcase}/#{I18n.t('views.user.activate.title').downcase}/:activation_token", to: 'users#activate', via: :get, as: 'activate'
+  match "/#{I18n.t('activerecord.models.user').downcase}/#{I18n.t('users.activate.title').downcase}/:activation_token", to: 'users#activate', via: :get, as: 'activate'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,13 +1,13 @@
 <ul class="nav nav-pills nav-stacked">
 	<% if policy(User.new).index? %>
 	<li <%= 'class=active' if controller?("users")%>>
-		<%= link_to t('views.user', count: 2), users_path %>
+		<%= link_to t('users', count: 2), users_path %>
 	</li>
 	<% end %>
 	
 	<% if policy(Role.new).index? %>
 	<li <%= 'class=active' if controller?("roles")%>>
-		<%= link_to t('views.role', count: 2), roles_path %>
+		<%= link_to t('roles', count: 2), roles_path %>
 	</li>
 	<% end %>
 </ul>

@@ -1,14 +1,14 @@
 <ul class="nav nav-pills nav-stacked">
 	<% if policy(Member.new).index? %>
 	<li <%= 'class=active' if controller?("members")%>>
-		<%= link_to t('views.member', count: 2), members_path %>
+		<%= link_to t('members', count: 2), members_path %>
 	</li>
 	<% end %>
 </ul>
 <ul class="nav nav-pills nav-stacked">
 	<% if policy(Person.new).index? %>
 	<li <%= 'class=active' if controller?("people")%>>
-		<%= link_to t('views.person', count: 2), people_path %>
+		<%= link_to t('people', count: 2), people_path %>
 	</li>
 	<% end %>
 </ul>

@@ -27,28 +27,21 @@ class CompetitionsController < ApplicationController
   def create
     @competition = Competition.new(competition_params)
 
-    respond_to do |format|
-      if @competition.save
-        format.html { redirect_to @competition, notice: 'Competition was successfully created.' }
-        format.json { render :show, status: :created, location: @competition }
-      else
-        format.html { render :new }
-        format.json { render json: @competition.errors, status: :unprocessable_entity }
-      end
+    if @competition.save
+      flash[:success] = t('.msg')
+      redirect_to @competition
+    else
+      format.html { render :new }
     end
   end
 
   # PATCH/PUT /competitions/1
-  # PATCH/PUT /competitions/1.json
   def update
-    respond_to do |format|
-      if @competition.update(competition_params)
-        format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
-        format.json { render :show, status: :ok, location: @competition }
-      else
-        format.html { render :edit }
-        format.json { render json: @competition.errors, status: :unprocessable_entity }
-      end
+    if @competition.update(competition_params)
+      flash[:success] = t('.msg')
+      redirect_to @competition
+    else
+      render :edit
     end
   end
 
@@ -57,19 +50,20 @@ class CompetitionsController < ApplicationController
   def destroy
     @competition.destroy
     respond_to do |format|
-      format.html { redirect_to competitions_url, notice: 'Competition was successfully destroyed.' }
+      format.html { redirect_to competitions_url, notice: t('.msg') }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_competition
-      @competition = Competition.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def competition_params
-      params.require(:competition).permit(:title, :start_date, :end_date, :venue_id, :competition_template_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_competition
+    @competition = Competition.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def competition_params
+    params.require(:competition).permit(:title, :start_date, :end_date, :venue_id, :competition_template_id)
+  end
 end

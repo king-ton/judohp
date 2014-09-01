@@ -1,4 +1,24 @@
 de:
+  
+  age_classes:
+    one: &age_class "Altersklasse"
+    other: &age_classes "Altersklassen"
+    short: "altersklassen"
+    index:
+      action: "Alle Altersklassen anzeigen"
+      title: "Altersklassen-Übersicht"
+    show:
+      action: Altersklasse-Details anzeigen
+    edit:
+      title: "Altersklasse bearbeiten"
+      action: "Altersklasse aktualisieren"
+    new:
+      title: "Neuer Altersklasse"
+      action: "Altersklasse erstellen"
+    delete:
+      title: "Altersklasse löschen"
+      action: "Altersklasse löschen"
+      
   competitions:
     one: &competition "Wettkampf"
     other: &competitions "Wettkämpfe"
@@ -8,15 +28,21 @@ de:
       action: "Alle Wettkämpfe anzeigen"
     show:
       action: Wettkampf-Details anzeigen
-    edit:
-      title: "Wettkampf bearbeiten"
-      action: "Wettkampf aktualisieren"
     new:
       title: "Neuer Wettkampf"
       action: "Wettkampf erstellen"
+    create:
+      msg: "Der Wettkampf wurde erfolgreich erstellt."
+    edit:
+      title: "Wettkampf bearbeiten"
+      action: "Wettkampf aktualisieren"
+    update:
+      msg: "Der Wettkampf wurde erfolgreich aktualisiert."
     delete:
       title: "Wettkampf löschen"
       action: "Wettkampf löschen"
+    msg:
+      destroyed: "Der Wettkampf wurde erfolgreich gelöscht."
       
   competition_templates:
     one: &competition_template "Wettkampf-Vorlage"
@@ -35,16 +61,143 @@ de:
     delete:
       title: "Wettkampf-Vorlage löschen"
       action: "Wettkampf-Vorlage löschen"
+      
+  contacts:
+    one: Kontakt-Daten
+  members:
+    one: &member "Mitglied"
+    other: &members "Mitglieder"
+    short: "mitglieder"
+    index:
+      title: "Mitglieder-Übersicht"
+      action: "Alle Mitglieder anzeigen"
+    show:
+      action: "Mitglieder-Details anzeigen"
+    new:
+      title: "Neues Mitglied"
+      action: "Mitglied erstellen"
+    create:
+      msg: "Das Mitglied wurde erfolgreich erstellt."
+    edit:
+      title: "Mitglied bearbeiten"
+      action: "Mitglied aktualisieren"
+    delete:
+      action: "Mitglied löschen"
+     
+  people:
+    one: &person "Person"
+    other: &people "Personen"
+    short: "personen"
+    index:
+      title: "Personen-Übersicht"
+      action: "Alle Personen anzeigen"
+    show:
+      action: "Personen-Details anzeigen"
+    new:
+      title: "Neue Person"
+      action: "Person erstellen"
+    create: "Die Person wurde erfolgreich erstellt."
+    edit:
+      title: "Person bearbeiten"
+      action: "Person aktualisieren"
+    update: "Die Person wurde erfolgreich aktualisiert."
+    delete:
+      title: "Person löschen"
+      action: "Person löschen"
+    msg:
+      destroyed: "Die Person wurde erfolgreich gelöscht."
+      
+  roles:
+    one: &role "Rolle"
+    other: &roles "Rollen"
+    short: "rollen"
+    index:
+      title: "Rollen-Übersicht"
+      action: "Alle Rollen anzeigen"
+    show:
+      action: "Rollen-Details anzeigen"
+    new:
+      title: "Neue Rolle"
+      action: "Rolle erstellen"
+    create:
+      msg: "Die Rolle wurde erfolgreich erstellt."
+    edit:
+      title: "Rolle bearbeiten"
+      action: "Rolle aktualisieren"
+    update:
+      msg: "Die Rolle wurde erfolgreich aktualisiert."
+    delete:
+      title: "Rolle löschen"
+      action: "Rolle löschen"
+    msg:
+      destroyed: "Die Rolle wurde erfolgreich gelöscht."
+
+  sessions:
+    new:
+      title: "Anmelden"
+      action: "Anmelden"
+    destroy:
+      action: "Abmelden"
+    msg:
+      create_error: "Ungültige E-Mail/Passwort Kombination"
+      sign_out: "Sie wurden erfolgreich abgemeldet." 
+  users:
+    one: &user "Benutzer"
+    other: &users "Benutzer"
+    short: "benutzer"
+    index:
+      title: "Benutzer-Übersicht"
+      action: "Alle Benutzer anzeigen"
+    show:
+      action: Benutzer-Details anzeigen
+    new:
+      title: "Neuer Benutzer"
+      action: "Benutzer erstellen"
+    create:
+      msg: "Der Benutzer wurde erfolgreich erstellt."
+    edit:
+      title: "Benutzer bearbeiten"
+      action: "Benutzer aktualisieren"
+    update:
+      msg: "Der Benutzer wurde erfolgreich aktualisiert."
+    delete:
+      title: "Benutzer löschen"
+      action: "Benutzer löschen"
+    activate:
+      title: "Aktivieren"
+      success: "Das Benutzer-Konto wurde erfolgreich aktiviert."
+      error: "Kein Benutzer-Konto mit diesem Aktivierungs-Code vorhanden."
+    self:
+      action: "Eigenes Profil bearbeiten"
+
+  venues:
+    one: &venue "Veranstaltungsort"
+    other: &venues "Veranstaltungsorte"
+    short: "veranstaltungsorte"
+    index:
+      action: "Alle Veranstaltungsorte anzeigen"
+    show:
+      action: Veranstaltungsort-Details anzeigen
+    edit:
+      title: "Veranstaltungsort bearbeiten"
+      action: "Veranstaltungsort aktualisieren"
+    new:
+      title: "Neuer Veranstaltungsort"
+      action: "Veranstaltungsort erstellen"
+    delete:
+      title: "Veranstaltungsort löschen"
+      action: "Veranstaltungsort löschen"
   
   activerecord:
     models:
+      age_class: *age_classes
       competition: *competitions
       competition_template: *competition_templates
-      member: "Mitglieder"
-      person: "Personen"
-      role: "Rollen"
-      user: "Benutzer"
-      venue: "Veranstaltungsort"
+      member: *members
+      person: *people
+      role: *roles
+      user: *users
+      venue: *venues
     attributes:
       competition:
         title: "Bezeichnung"
@@ -61,7 +214,7 @@ de:
         exit: "Austritt"
         entry_federation: "Eintritt Verband"
         exit_federation: "Austritt Verband"
-        person: "Person"
+        person: *person
         mum: "Mutter"
         dad: "Vater"
       person:
@@ -74,7 +227,7 @@ de:
         street: "Straße"
         zip: "Postleitzahl"
         city: "Wohnort"
-        user: "Benutzer"
+        user: *user
       role:
         name: "Name"
         activities: "Berechtigungen"
@@ -106,143 +259,6 @@ de:
     back: "Zurück"
     cancel: "Abbrechen"
     edit: "Bearbeiten"
-    age_class:
-      one: "Altersklasse"
-      other: "Altersklassen"
-      short: "altersklassen"
-      index:
-        action: "Alle Altersklassen anzeigen"
-        title: "Altersklassen-Übersicht"
-      show:
-        action: Altersklasse-Details anzeigen
-      edit:
-        title: "Altersklasse bearbeiten"
-        action: "Altersklasse aktualisieren"
-      new:
-        title: "Neuer Altersklasse"
-        action: "Altersklasse erstellen"
-      delete:
-        title: "Altersklasse löschen"
-        action: "Altersklasse löschen"
     
-    contact:
-      one: Kontakt-Daten
-    member:
-      one: "Mitglied"
-      other: "Mitglieder"
-      short: "mitglieder"
-      index:
-        title: "Mitglieder-Übersicht"
-        action: "Alle Mitglieder anzeigen"
-      show:
-        action: "Mitglieder-Details anzeigen"
-      new:
-        title: "Neues Mitglied"
-        action: "Mitglied erstellen"
-      edit:
-        title: "Mitglied bearbeiten"
-        action: "Mitglied aktualisieren"
-      delete:
-        action: "Mitglied löschen"
-      msg:
-        created: "Das Mitglied wurde erfolgreich erstellt."
-    person:
-      one: "Person"
-      other: "Personen"
-      short: "personen"
-      index:
-        title: "Personen-Übersicht"
-        action: "Alle Personen anzeigen"
-      show:
-        action: "Personen-Details anzeigen"
-      new:
-        title: "Neue Person"
-        action: "Person erstellen"
-      edit:
-        title: "Person bearbeiten"
-        action: "Person aktualisieren"
-      delete:
-        title: "Person löschen"
-        action: "Person löschen"
-      msg:
-        created: "Die Person wurde erfolgreich erstellt."
-        updated: "Die Person wurde erfolgreich aktualisiert."
-        destroyed: "Die Person wurde erfolgreich gelöscht."
-    role:
-      one: "Rolle"
-      other: "Rollen"
-      short: "rollen"
-      index:
-        title: "Rollen-Übersicht"
-        action: "Alle Rollen anzeigen"
-      show:
-        action: "Rollen-Details anzeigen"
-      new:
-        title: "Neue Rolle"
-        action: "Rolle erstellen"
-      edit:
-        title: "Rolle bearbeiten"
-        action: "Rolle aktualisieren"
-      delete:
-        title: "Rolle löschen"
-        action: "Rolle löschen"
-      msg:
-        created: "Die Rolle wurde erfolgreich erstellt."
-        updated: "Die Rolle wurde erfolgreich aktualisiert."
-        destroyed: "Die Rolle wurde erfolgreich gelöscht."
-
-    session:
-      new:
-        title: "Anmelden"
-        action: "Anmelden"
-      destroy:
-        action: "Abmelden"
-      msg:
-        create_error: "Ungültige E-Mail/Passwort Kombination"
-        sign_out: "Sie wurden erfolgreich abgemeldet." 
-    user:
-      one: "Benutzer"
-      other: "Benutzer"
-      short: "benutzer"
-      index:
-        title: "Benutzer-Übersicht"
-        action: "Alle Benutzer anzeigen"
-      show:
-        action: Benutzer-Details anzeigen
-      edit:
-        title: "Benutzer bearbeiten"
-        action: "Benutzer aktualisieren"
-      new:
-        title: "Neuer Benutzer"
-        action: "Benutzer erstellen"
-      delete:
-        title: "Benutzer löschen"
-        action: "Benutzer löschen"
-      activate:
-        title: "Aktivieren"
-        success: "Das Benutzer-Konto wurde erfolgreich aktiviert."
-        error: "Kein Benutzer-Konto mit diesem Aktivierungs-Code vorhanden."
-      self:
-        action: "Eigenes Profil bearbeiten"
-      msg:
-        created: "Der Benutzer wurde erfolgreich erstellt."
-        updated: "Der Benutzer wurde erfolgreich aktualisiert."
-    venue:
-      one: "Veranstaltungsort"
-      other: "Veranstaltungsorte"
-      short: "veranstaltungsorte"
-      index:
-        action: "Alle Veranstaltungsorte anzeigen"
-      show:
-        action: Veranstaltungsort-Details anzeigen
-      edit:
-        title: "Veranstaltungsort bearbeiten"
-        action: "Veranstaltungsort aktualisieren"
-      new:
-        title: "Neuer Veranstaltungsort"
-        action: "Veranstaltungsort erstellen"
-      delete:
-        title: "Veranstaltungsort löschen"
-        action: "Veranstaltungsort löschen"
   pundit:
     error: "Zugriff verweigert."

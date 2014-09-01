@@ -41,13 +41,13 @@
 						</li>
 						<li class="divider"></li>
 						<li>
-							<%= link_to raw("<span class='glyphicon glyphicon-log-out'></span> #{t('views.session.destroy.action')}"), signout_path, :method => "delete" %>
+							<%= link_to raw("<span class='glyphicon glyphicon-log-out'></span> #{t('sessions.destroy.action')}"), signout_path, :method => "delete" %>
 						</li>
 					</ul>
 				</li>
 				<% else %>
 				<li>
-					<%= link_to t('views.session.new.action'), signin_path %>
+					<%= link_to t('sessions.new.action'), signin_path %>
 				</li>
 				<% end %>
 			</ul>

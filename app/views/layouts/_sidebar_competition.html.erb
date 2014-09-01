@@ -14,13 +14,13 @@
 
 	<% if policy(Venue.new).index? %>
 	<li <%= 'class=active' if controller?("venues")%>>
-		<%= link_to t('views.venue', count: 2), venues_path %>
+		<%= link_to t('venues', count: 2), venues_path %>
 	</li>
 	<% end %>
 	
 	<% if policy(AgeClass.new).index? %>
 	<li <%= 'class=active' if controller?("age_classes")%>>
-		<%= link_to t('views.age_class', count: 2), age_classes_path %>
+		<%= link_to t('age_classes', count: 2), age_classes_path %>
 	</li>
 	<% end %>
 </ul>

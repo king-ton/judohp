@@ -46,7 +46,7 @@ module ApplicationHelper
   def link_to_new(model, a={:text => false, :wrap => nil})
     a[:allow] = policy(model.classify.constantize.new).new? if a[:allow] == nil
     if a[:allow]
-      link = link_to(raw("<span class='glyphicon glyphicon-plus'></span> #{(a[:text] ? t('views.' + model.singularize + '.new.action') : '')}"), send("new_" + model.singularize + "_path"))
+      link = link_to(raw("<span class='glyphicon glyphicon-plus'></span> #{(a[:text] ? t(model + '.new.action') : '')}"), send("new_" + model.singularize + "_path"))
       if a[:wrap] != nil
         content_tag(a[:wrap], link)
       else

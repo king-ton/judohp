@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :delete]
   before_action except: [:show, :edit, :update, :activate] do
     authorize(User.new)
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       #sign_in @user
-      flash[:success] = t('views.user.msg.created')
+      flash[:success] = t('.msg')
       redirect_to @user
     else
       render action: 'new'
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       sign_in @user
-      flash[:success] = t('views.user.msg.updated')
+      flash[:success] = t('.msg')
       redirect_to @user
     else
       render action: 'edit'
@@ -51,7 +51,6 @@ class UsersController < ApplicationController
   end
 
   def delete
-    @user = User.find(params[:user_id])
   end
 
   # DELETE /roles/1
@@ -66,14 +65,14 @@ class UsersController < ApplicationController
     if @user
       @user.activated = true
        if @user.save
-         flash[:success] = t("views.user.activate.success")
+         flash[:success] = t("user.activate.success")
          puts "###########################"
        else
          flash[:danger] = "Ein Fehler ist aufgetreten."
        end
       
     else
-      flash[:danger] = t("views.user.activate.error")
+      flash[:danger] = t("user.activate.error")
     end
     redirect_to root_path
   end

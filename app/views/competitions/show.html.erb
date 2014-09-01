@@ -13,13 +13,13 @@
 <% end %>
 
 <p>
-  <strong><%= t('views.venue', count: 1) %>:</strong>
+  <strong><%= t('venues', count: 1) %>:</strong>
   <% if policy(Venue.new).show? %><%= link_to @competition.venue.city, venue_path(@competition.venue) %> <% else %> <%= @competition.venue.city %><% end %>
   
 </p>
 
 <p>
-  <strong><%= t('views.competition_template', count: 1) %>:</strong>
+  <strong><%= t('competition_templates', count: 1) %>:</strong>
   <% if policy(CompetitionTemplate.new).show? %><%= link_to @competition.competition_template.short_name, competition_template_path(@competition.competition_template) %> <% else %> <%= @competition.competition_template.short_name %><% end %></td>
 	
 </p>

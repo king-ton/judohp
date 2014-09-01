@@ -33,7 +33,7 @@ class RolesController < ApplicationController
       format.html do
         @role = Role.new(role_params)
         if @role.save
-          flash[:success] = t('views.role.msg.created')
+          flash[:success] = t('.msg')
           redirect_to @role
         else
           render action: 'new'
@@ -45,7 +45,7 @@ class RolesController < ApplicationController
   # PATCH/PUT /roles/1
   def update
     if @role.update(role_params)
-      flash[:success] = t('views.role.msg.updated')
+      flash[:success] = t('.msg')
       redirect_to @role
     else
       render action: 'edit'

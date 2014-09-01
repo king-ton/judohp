@@ -66,7 +66,7 @@
 				<hr />
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title"> <%= t('views.contact', count: 1) %>
+						<h3 class="panel-title"> <%= t('contacts', count: 1) %>
 						<%= link_to_add_fields form_person, :contacts %> </h3>
 					</div>
 					<div id="contacts-list" class="panel-body">
@@ -89,7 +89,7 @@
 
 		<% end %>
 
-		<%= form.submit t('views.member.new.action'), :class => 'btn btn-success' %>
+		<%= form.submit :class => 'btn btn-success' %>
 		<% end %>
 	</div>
 </div>

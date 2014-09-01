@@ -36,26 +36,25 @@ class MembersController < ApplicationController
         @member.person.user.password_confirmation = l @member.person.birth_date
       end
     end
-    
-      if @member.save
-        UserMailer.welcome_email(@member.person.user).deliver
-        flash[:success] = t('views.member.msg.created')
-        redirect_to @member
-      else
-        @member.person.errors.add_on_blank(:birth_date)
-        @member.person.user.id = ''
-        render action: 'new'
-      end
+  
+    if @member.save
+      UserMailer.welcome_email(@member.person.user).deliver
+      flash[:success] = t('.msg')
+      redirect_to @member
+    else
+      @member.person.errors.add_on_blank(:birth_date)
+      @member.person.user.id = ''
+      render action: 'new'
+    end
   end
 
   # PATCH/PUT /members/1
   def update
-    respond_to do |format|
-      if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @member.update(member_params)
+      flash[:sucess] = t('.msg')
+      redirect_to @member
+    else
+      render action: 'edit' 
     end
   end
 
