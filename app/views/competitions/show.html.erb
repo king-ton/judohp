@@ -1,29 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @competition.title ) %>
 
 <p>
-  <strong>Title:</strong>
-  <%= @competition.title %>
+  <strong><%= t('activerecord.attributes.competition.start_date') %>:</strong>
+  <%= l(@competition.start_date) %>
 </p>
 
+<% if @competition.end_date != nil and @competition.end_date != @competition.start_date%>
 <p>
-  <strong>Start date:</strong>
-  <%= @competition.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
+  <strong><%= t('activerecord.attributes.competition.end_date') %>:</strong>
   <%= @competition.end_date %>
 </p>
+<% end %>
 
 <p>
-  <strong>Venue:</strong>
-  <%= @competition.venue_id %>
+  <strong><%= t('views.venue', count: 1) %>:</strong>
+  <% if policy(Venue.new).show? %><%= link_to @competition.venue.city, venue_path(@competition.venue) %> <% else %> <%= @competition.venue.city %><% end %>
+  
 </p>
 
 <p>
-  <strong>Competition template:</strong>
-  <%= @competition.competition_template_id %>
+  <strong><%= t('views.competition_template', count: 1) %>:</strong>
+  <% if policy(CompetitionTemplate.new).show? %><%= link_to @competition.competition_template.short_name, competition_template_path(@competition.competition_template) %> <% else %> <%= @competition.competition_template.short_name %><% end %></td>
+	
 </p>
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>

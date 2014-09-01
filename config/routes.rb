@@ -9,7 +9,7 @@ Judohp::Application.routes.draw do
   end
 
   scope(:path_names => { :new => I18n.t('views.new').downcase, :edit => I18n.t('views.edit').downcase }) do
-    resources :competitions, :path => I18n.t('views.competition.short') do
+    resources :competitions, :path => I18n.t('competitions.short') do
       get "delete"
     end
   end

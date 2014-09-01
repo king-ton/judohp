@@ -36,7 +36,6 @@ function selectChanged(sel, model) {
 	var a_href = $('.' + sel + '-edit').attr('href');
 	var number = a_href.match(/[0-9]+/g);
 	a_href = a_href.replace(number, value);
-
 	if (value == "") {
 		$('.' + sel + '-edit').addClass('hidden');
 	} else {

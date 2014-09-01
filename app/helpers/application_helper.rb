@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def link_to_index(model, a={:text => false, :wrap => nil})
-    a[:allow] = policy(Object.const_get(model.singularize.capitalize).new).index? if a[:allow] == nil
+    a[:allow] = policy(model.classify.constantize.new).index? if a[:allow] == nil
     if a[:allow]
       link = link_to(raw("<span class='glyphicon glyphicon-th'></span> #{(a[:text] ? t('views.index') : '')}"), send(model + "_path"))
       if a[:wrap] != nil
@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def link_to_new(model, a={:text => false, :wrap => nil})
-    a[:allow] = policy(Object.const_get(model.singularize.capitalize).new).new? if a[:allow] == nil
+    a[:allow] = policy(model.classify.constantize.new).new? if a[:allow] == nil
     if a[:allow]
       link = link_to(raw("<span class='glyphicon glyphicon-plus'></span> #{(a[:text] ? t('views.' + model.singularize + '.new.action') : '')}"), send("new_" + model.singularize + "_path"))
       if a[:wrap] != nil
@@ -58,7 +58,7 @@ module ApplicationHelper
   def link_to_edit(model, a={:text => false, :wrap => nil})
     a[:allow] = policy(model).edit? if a[:allow] == nil
     if a[:allow]
-      link = link_to(raw("<span class='glyphicon glyphicon-pencil'></span> #{(a[:text] ? t('views.edit') : '')}"), send("edit_" + model.class.to_s.downcase + "_path", model))
+      link = link_to(raw("<span class='glyphicon glyphicon-pencil'></span> #{(a[:text] ? t('views.edit') : '')}"), send("edit_" + model.class.to_s.tableize.singularize + "_path", model))
       if a[:wrap] != nil
         content_tag(a[:wrap], link)
       else
@@ -70,7 +70,7 @@ module ApplicationHelper
   def link_to_delete(model, a={:text => false, :wrap => nil})
     a[:allow] = policy(model).delete? if a[:allow] == nil
     if a[:allow]
-      link = link_to(raw("<span class='glyphicon glyphicon-trash'></span> #{(a[:text] ? t('views.destroy') : '')}"), send(model.class.to_s.downcase + "_delete_path", model), remote: true)
+      link = link_to(raw("<span class='glyphicon glyphicon-trash'></span> #{(a[:text] ? t('views.destroy') : '')}"), send(model.class.to_s.tableize.singularize + "_delete_path", model), remote: true)
       if a[:wrap] != nil
         content_tag(a[:wrap], link)
       else

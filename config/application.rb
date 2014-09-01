@@ -27,5 +27,8 @@ module Judohp
     
     # Überprüft, ob locales vorhanden und valide sind
     I18n.config.enforce_available_locales = true
+    
+    # Bootstrap-Glyphicon-Bug
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
   end
 end

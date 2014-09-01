@@ -1,8 +1,45 @@
 de:
+  competitions:
+    one: &competition "Wettkampf"
+    other: &competitions "Wettkämpfe"
+    short: "wettkaempfe"
+    index:
+      title: "Wettkämpfe-Übersicht"
+      action: "Alle Wettkämpfe anzeigen"
+    show:
+      action: Wettkampf-Details anzeigen
+    edit:
+      title: "Wettkampf bearbeiten"
+      action: "Wettkampf aktualisieren"
+    new:
+      title: "Neuer Wettkampf"
+      action: "Wettkampf erstellen"
+    delete:
+      title: "Wettkampf löschen"
+      action: "Wettkampf löschen"
+      
+  competition_templates:
+    one: &competition_template "Wettkampf-Vorlage"
+    other: &competition_templates "Wettkampf-Vorlagen"
+    short: "wettkampf-vorlagen"
+    index:
+      action: "Alle Wettkampf-Vorlagen anzeigen"
+    show:
+      action: "Wettkampf-Vorlage-Details anzeigen"
+    edit:
+      title: "Wettkampf-Vorlage bearbeiten"
+      action: "Wettkampf-Vorlage aktualisieren"
+    new:
+      title: "Neuer Wettkampf-Vorlage"
+      action: "Wettkampf-Vorlage erstellen"
+    delete:
+      title: "Wettkampf-Vorlage löschen"
+      action: "Wettkampf-Vorlage löschen"
+  
   activerecord:
     models:
-      competition: "Wettkämpfe"
-      competition_template: "Wettkampf-Vorlagen"
+      competition: *competitions
+      competition_template: *competition_templates
       member: "Mitglieder"
       person: "Personen"
       role: "Rollen"
@@ -13,6 +50,8 @@ de:
         title: "Bezeichnung"
         start_date: "Datum"
         end_date: "Enddatum"
+        venue: "Veranstaltungsort"
+        competition_template: *competition_template
       contact:
         name: "Bezeichnung"
         number: "Telefon-Nummer"
@@ -73,6 +112,7 @@ de:
       short: "altersklassen"
       index:
         action: "Alle Altersklassen anzeigen"
+        title: "Altersklassen-Übersicht"
       show:
         action: Altersklasse-Details anzeigen
       edit:
@@ -84,40 +124,7 @@ de:
       delete:
         title: "Altersklasse löschen"
         action: "Altersklasse löschen"
-    competition:
-      one: "Wettkampf"
-      other: "Wettkämpfe"
-      short: "wettkaempfe"
-      index:
-        action: "Alle Wettkämpfe anzeigen"
-      show:
-        action: Wettkampf-Details anzeigen
-      edit:
-        title: "Wettkampf bearbeiten"
-        action: "Wettkampf aktualisieren"
-      new:
-        title: "Neuer Wettkampf"
-        action: "Wettkampf erstellen"
-      delete:
-        title: "Wettkampf löschen"
-        action: "Wettkampf löschen"
-    competition_template:
-      one: "Wettkampf-Vorlage"
-      other: "Wettkampf-Vorlagen"
-      short: "wettkampf-vorlagen"
-      index:
-        action: "Alle Wettkampf-Vorlagen anzeigen"
-      show:
-        action: Wettkampf-Vorlage-Details anzeigen
-      edit:
-        title: "Wettkampf-Vorlage bearbeiten"
-        action: "Wettkampf-Vorlage aktualisieren"
-      new:
-        title: "Neuer Wettkampf-Vorlage"
-        action: "Wettkampf-Vorlage erstellen"
-      delete:
-        title: "Wettkampf-Vorlage löschen"
-        action: "Wettkampf-Vorlage löschen"
+    
     contact:
       one: Kontakt-Daten
     member:
@@ -239,4 +246,3 @@ de:
         action: "Veranstaltungsort löschen"
   pundit:
     error: "Zugriff verweigert."
-    
