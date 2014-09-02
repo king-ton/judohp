@@ -1,0 +1,14 @@
+<% allow_show = policy(CompetitionTemplate.new).show? %>
+<% allow_edit = policy(CompetitionTemplate.new).edit? %>
+<% allow_delete = policy(CompetitionTemplate.new).delete? %>
+
+<% @competition_templates.each do |competition_template| %>
+<tr>
+	<td><%= competition_template.title %></td>
+	<td><%= competition_template.short_name %></td>
+	<td><% if policy(Venue.new).show? %><%= link_to competition_template.venue.city, venue_path(competition_template.venue) %> <% else %> <%= competition_template.venue.city %><% end %></td>
+	<%= link_to_show competition_template, :wrap => 'td', :allow => allow_show %>
+	<%= link_to_edit competition_template, :wrap => 'td', :allow => allow_edit %>
+	<%= link_to_delete competition_template, :wrap => 'td', :allow => allow_delete %>
+</tr>
+<% end %>

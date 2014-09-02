@@ -32,16 +32,19 @@ function remove_fields(link) {
 }
 
 function selectChanged(sel, model) {
-	var value = $('#' + model + '_' + sel + '_id option:selected').val();
-	var a_href = $('.' + sel + '-edit').attr('href');
-	var number = a_href.match(/[0-9]+/g);
-	a_href = a_href.replace(number, value);
-	if (value == "") {
-		$('.' + sel + '-edit').addClass('hidden');
-	} else {
-		$('.' + sel + '-edit').attr('href', a_href);
-		$('.' + sel + '-edit').removeClass('hidden');
+	if ($('#' + model + '_' + sel + '_id').length > 0) {
+		var value = $('#' + model + '_' + sel + '_id option:selected').val();
+		var a_href = $('.' + sel + '-edit').attr('href');
+		var number = a_href.match(/[0-9]+/g);
+		a_href = a_href.replace(number, value);
+		if (value == "") {
+			$('.' + sel + '-edit').addClass('hidden');
+		} else {
+			$('.' + sel + '-edit').attr('href', a_href);
+			$('.' + sel + '-edit').removeClass('hidden');
+		}
 	}
+
 }
 
 function initMonthlyDatePicker() {

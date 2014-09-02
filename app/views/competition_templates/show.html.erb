@@ -1,19 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @competition_template.title ) %>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t('activerecord.attributes.competition_template.title') %>:</strong>
   <%= @competition_template.title %>
 </p>
 
 <p>
-  <strong>Short name:</strong>
+  <strong><%= t('activerecord.attributes.competition_template.short_name') %>:</strong>
   <%= @competition_template.short_name %>
 </p>
 
 <p>
-  <strong>Venue:</strong>
-  <%= @competition_template.venue_id %>
+  <strong><%= t('venues', count: 1) %>:</strong>
+  <% if policy(Venue.new).show? %><%= link_to @competition_template.venue.city, venue_path(@competition_template.venue) %> <% else %> <%= @competition_template.venue.city %><% end %>
 </p>
-
-<%= link_to 'Edit', edit_competition_template_path(@competition_template) %> |
-<%= link_to 'Back', competition_templates_path %>

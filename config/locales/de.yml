@@ -49,15 +49,20 @@ de:
     other: &competition_templates "Wettkampf-Vorlagen"
     short: "wettkampf-vorlagen"
     index:
+      title: "Wettkampf-Vorlagen-Übersicht"
       action: "Alle Wettkampf-Vorlagen anzeigen"
     show:
       action: "Wettkampf-Vorlage-Details anzeigen"
+    new:
+      title: "Neue Wettkampf-Vorlage"
+      action: "Wettkampf-Vorlage erstellen"
+    create:
+      msg: "Die Wettkampf-Vorlage wurde erfolgreich erstellt."
     edit:
       title: "Wettkampf-Vorlage bearbeiten"
       action: "Wettkampf-Vorlage aktualisieren"
-    new:
-      title: "Neuer Wettkampf-Vorlage"
-      action: "Wettkampf-Vorlage erstellen"
+    update:
+      msg: "Die Wettkampf-Vorlage wurde erfolgreich aktualisiert."
     delete:
       title: "Wettkampf-Vorlage löschen"
       action: "Wettkampf-Vorlage löschen"
@@ -203,8 +208,12 @@ de:
         title: "Bezeichnung"
         start_date: "Datum"
         end_date: "Enddatum"
-        venue: "Veranstaltungsort"
+        venue: *venue
         competition_template: *competition_template
+      competition_template:
+        title: "Bezeichnung"
+        short_name: "Kurzname"
+        venue: *venue
       contact:
         name: "Bezeichnung"
         number: "Telefon-Nummer"
