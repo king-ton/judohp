@@ -1,0 +1,15 @@
+<% allow_show = policy(Venue.new).show? %>
+<% allow_edit = policy(Venue.new).edit? %>
+<% allow_delete = policy(Venue.new).delete? %>
+
+<% @venues.each do |venue| %>
+<tr>
+	<td><%= venue.name %></td>
+	<td><%= venue.street %></td>
+	<td><%= "%05d" % venue.zip if venue.zip != nil %></td>
+	<td><%= venue.city %></td>
+	<%= link_to_show venue, :wrap => 'td', :allow => allow_show %>
+	<%= link_to_edit venue, :wrap => 'td', :allow => allow_edit %>
+	<%= link_to_delete venue, :wrap => 'td', :allow => allow_delete %>
+</tr>
+<% end %>

@@ -101,11 +101,13 @@ de:
     new:
       title: "Neue Person"
       action: "Person erstellen"
-    create: "Die Person wurde erfolgreich erstellt."
+    create:
+      msg: "Die Person wurde erfolgreich erstellt."
     edit:
       title: "Person bearbeiten"
       action: "Person aktualisieren"
-    update: "Die Person wurde erfolgreich aktualisiert."
+    update:
+      msg: "Die Person wurde erfolgreich aktualisiert."
     delete:
       title: "Person löschen"
       action: "Person löschen"
@@ -181,28 +183,33 @@ de:
     short: "veranstaltungsorte"
     index:
       action: "Alle Veranstaltungsorte anzeigen"
+      title: "Veranstaltungsorte-Übersicht"
     show:
       action: Veranstaltungsort-Details anzeigen
-    edit:
-      title: "Veranstaltungsort bearbeiten"
-      action: "Veranstaltungsort aktualisieren"
     new:
       title: "Neuer Veranstaltungsort"
       action: "Veranstaltungsort erstellen"
+    create:
+      msg: "Der Veranstaltungsort wurde erfolgreich erstellt."
+    edit:
+      title: "Veranstaltungsort bearbeiten"
+      action: "Veranstaltungsort aktualisieren"
+    update:
+      msg: "Der Veranstaltungsort wurde erfolgreich aktualisiert."
     delete:
       title: "Veranstaltungsort löschen"
       action: "Veranstaltungsort löschen"
   
   activerecord:
     models:
-      age_class: *age_classes
-      competition: *competitions
-      competition_template: *competition_templates
-      member: *members
-      person: *people
-      role: *roles
-      user: *users
-      venue: *venues
+      age_class: *age_class
+      competition: *competition
+      competition_template: *competition_template
+      member: *member
+      person: *person
+      role: *role
+      user: *user
+      venue: *venue
     attributes:
       competition:
         title: "Bezeichnung"
@@ -245,6 +252,12 @@ de:
         email: "E-Mail"
         password: "Passwort"
         password_confirmation: "Passwort-Bestätigung"
+      venue:
+        name: 'Name'
+        street: 'Straße'
+        zip: 'Postleitzahl'
+        city: 'Wohnort'
+        
     errors:
       models:
         member:

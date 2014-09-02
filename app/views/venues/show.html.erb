@@ -1,24 +1,22 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @venue.name ) %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.venue.name') %>:</strong>
   <%= @venue.name %>
 </p>
 
 <p>
-  <strong>Street:</strong>
+  <strong><%= t('activerecord.attributes.venue.street') %>:</strong>
   <%= @venue.street %>
 </p>
 
 <p>
-  <strong>Zip:</strong>
-  <%= @venue.zip %>
+  <strong><%= t('activerecord.attributes.venue.zip') %>:</strong>
+  <%= "%05d" % @venue.zip if @venue.zip != nil %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong><%= t('activerecord.attributes.venue.city') %>:</strong>
   <%= @venue.city %>
 </p>
 
-<%= link_to 'Edit', edit_venue_path(@venue) %> |
-<%= link_to 'Back', venues_path %>

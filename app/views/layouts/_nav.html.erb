@@ -13,17 +13,17 @@
 			<ul class="nav navbar-nav">
 				<% if policy(User.new).index? || policy(Role.new).index? %>
 				<li <%= 'class=active' if controller?("users", "roles")%>>
-					<%= link_to t("activerecord.models.user"), users_path %>
+					<%= link_to t("users", count: 2), users_path %>
 				</li>
 				<% end %>
 				<% if policy(Person.new).index? || policy(Member.new).index? %>
 				<li <%= 'class=active' if controller?("people", "members")%>>
-					<%= link_to t("activerecord.models.member"), members_path %>
+					<%= link_to t("members", count: 2), members_path %>
 				</li>
 				<% end %>
 				<% if policy(Venue.new).index? || policy(CompetitionTemplate.new).index? || policy(Competition.new).index? || policy(AgeClass.new).index? %>
 				<li <%= 'class=active' if controller?("venues", "competition_templates", "competitions", "age_classes")%>>
-					<%= link_to t("activerecord.models.competition"), competitions_path %>
+					<%= link_to t("competitions", count: 2), competitions_path %>
 				</li>
 				<% end %>
 			</ul>

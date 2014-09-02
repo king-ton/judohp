@@ -29,7 +29,10 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
+        format.html { 
+          flash[:success] = t('.msg')
+          redirect_to @venue
+          }
         format.json { render :show, status: :created, location: @venue }
       else
         format.html { render :new }
@@ -43,7 +46,10 @@ class VenuesController < ApplicationController
   def update
     respond_to do |format|
       if @venue.update(venue_params)
-        format.html { redirect_to @venue, notice: 'Venue was successfully updated.' }
+        format.html { 
+          flash[:success] = t('.msg')
+          redirect_to @venue
+        }
         format.json { render :show, status: :ok, location: @venue }
       else
         format.html { render :edit }
