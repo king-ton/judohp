@@ -1,0 +1,21 @@
+$("ul.errors").html("")
+<% if @venue.errors.any? %>
+	<% @venue.errors.full_messages.each do |message| %>
+		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+	<% end %>
+<% else %>
+	var msg = ""
+	<% if action?('create')%>
+		$('#competition_template_venue_id').append($("<option />").html("<%= @venue.name %>").attr("value", <%= @venue.id %>))
+		$('#competition_template_venue_id option:last-child').attr("selected",true)
+		selectChanged('venue', 'competition_template')
+		msg = "<%= I18n.translate("venues.create.msg") %>"
+	<% else %>
+		$('#competition_template_venue_id option[value=<%= @venue.id %>]').html("<%= @venue.name %>")
+		msg = "<%= I18n.translate("venues.update.msg") %>"
+	<% end %>
+	$(".alert").remove()
+	$("<div class='alert alert-success alert-dismissable fade in'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + msg + "</div>").insertAfter(".page-header")
+
+	$("#venue-modal").modal("hide")
+<% end %>
