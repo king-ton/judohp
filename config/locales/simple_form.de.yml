@@ -1,0 +1,9 @@
+de:  
+  simple_form:
+    placeholders:
+      members:
+        member_number: 'z.B. 2014-001'
+    required:
+      text: 'benötigt'
+      mark: '*'
+      html: '*'

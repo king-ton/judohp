@@ -1,31 +1,27 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
   before_action { authorize(Competition.new) }
+  before_action :set_age_classes, only: [:new, :edit]
 
   # GET /competitions
-  # GET /competitions.json
   def index
     @competitions = Competition.all
   end
 
   # GET /competitions/1
-  # GET /competitions/1.json
   def show
   end
 
   # GET /competitions/new
   def new
     @competition = Competition.new
-    @age_classes = AgeClasses.find(:all, :order => "min_age, max_age, name")
   end
 
   # GET /competitions/1/edit
   def edit
-    @age_classes = AgeClass.all.order("min_age, max_age, name")
   end
 
   # POST /competitions
-  # POST /competitions.json
   def create
     @competition = Competition.new(competition_params)
 
@@ -62,6 +58,10 @@ class CompetitionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_competition
     @competition = Competition.find(params[:id])
+  end
+  
+  def set_age_classes
+    @age_classes = AgeClass.all.order("min_age, max_age, name")
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

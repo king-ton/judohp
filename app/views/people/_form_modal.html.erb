@@ -1,90 +1,60 @@
 <%= simple_form_for(@person, remote: true) do |f| %>
 <div class="modal-body">
 	<ul class="errors"></ul>
-
+	
 	<div class="row" >
 		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.input :last_name, input_html: { class: 'form-control' } %>
-			</div>
+			<%= f.input :last_name %>
 		</div>
 		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.input :first_name, input_html: { class: 'form-control' } %>
-			</div>
+			<%= f.input :first_name %>
 		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.input :gender,:as => :select, :collection => [[t('gender.male'),true], [t('gender.female'),false]], input_html: { class: 'form-control' } %>
-			</div>
+			<%= f.input :gender,:as => :select, :collection => [[t('gender.male'),true], [t('gender.female'),false]] %>
 		</div>
 		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.input :nationality, :as => :country, priority: ["DE"], iso_codes: true, input_html: { class: 'form-control' } %>
-				<span class="help-block">Test</span>
-			</div>
+			<%= f.input :nationality, :as => :country, priority: ["DE"], iso_codes: true %>
 		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-6">
-			<%= render :partial => 'fields/date', :locals => { f: f, model: @person, attr: :birth_date } %>
+			<%= f.input :birth_date, as: :date_time_picker %>
 		</div>
 		<div class="col-md-6">
-			<div class="form-group">
-				<%= f.input :birth_place, input_html: { class: 'form-control' } %>
-			</div>
+			<%= f.input :birth_place %>
 		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-12">
-			<div class="form-group">
-				<%= f.input :street, input_html: { class: 'form-control' } %>
-			</div>
+			<%= f.input :street %>
 		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-4">
-			<div class="form-group">
-				<%= f.input :zip, input_html: { class: 'form-control', :value => ("%05d" % f.object.zip if f.object.zip != nil) } %>
-			</div>
+			<%= f.input :zip, as: :string, input_html: { :value => ("%05d" % f.object.zip if f.object.zip != nil) } %>
 		</div>
 		<div class="col-md-8">
-			<div class="form-group">
-				<%= f.input :city, input_html: { class: 'form-control' } %>
-			</div>
+			<%= f.input :city %>
 		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"> <%= f.label :user %>
-					<div class="pull-right">
-						<% if policy(User.new).new? %>
-						<%= link_to raw("<span class='glyphicon glyphicon-plus green'></span>"), new_user_path, remote: true, id: "user" %>
-						<% end %>
-						<% if policy(User.new).edit? %>
-						<%= link_to raw("<span class='glyphicon glyphicon-pencil yellow'></span>"), edit_user_path(1), class: "hidden user-edit", remote: true %>
-						<% end %>
-					</div></h3>
+					<h3 class="panel-title"> <%= f.label :user %></h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
-						<%= f.association :user,  input_html: { class: 'form-control' }, label: false %>
-					</div>
+					<%= f.association :user, label: false %>
 				</div>
-			</div>
-			<div class="form-group">
-				<%# f.association :user, input_html: { class: 'form-control' } %>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="modal-footer">
 	<%= f.button :submit,  :class => 'btn btn-success' %>
-	<%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+	<%= link_to t('views.cancel'), "#", class: "btn", data: {dismiss: "modal"} %>
 </div>
 <% end %>
 

@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
   # Aktivierungs-Code
   before_create :create_activation_token
 
+  def to_s
+    person ? person.name : email
+  end
+
   private
 
   def create_remember_token

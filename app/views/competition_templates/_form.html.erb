@@ -1,7 +1,7 @@
 <%= simple_form_for(@competition_template) do |f| %>
 
 <div class="row" >
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="form-group <%= "has-error" if @competition_template.errors[:title].any? %>">
 			<%= f.input :title, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
 			<% if @competition_template.errors[:title].any? %>

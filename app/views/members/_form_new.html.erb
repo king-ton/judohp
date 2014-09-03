@@ -1,95 +1,103 @@
+<%= simple_form_for(@member) do |f| %>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f.input :member_number %>
+	</div>
+	<div class="col-md-3">
+		<%= f.input :entry, as: :date_time_picker, class: "month" %>
+	</div>
+
+</div>
+
 <div class="row" >
 	<div class="col-md-6">
-		<%= simple_form_for(@member) do |form| %>
-		<div class="row" >
-			<div class="col-md-6">
-				<%= render :partial => 'fields/text', locals: { f: form, model: @member, attr: :member_number, input_html: { placeholder: 'z.B. 2014-001' } } %>
-			</div>
-			<div class="col-md-6">
-				<%= render :partial => 'fields/date', :locals => { f: form, model: @member, attr: :entry, month: 1 } %>
-			</div>
-		</div>
-
 		<hr />
-
-		<%= form.simple_fields_for :person do |form_person| %>
-		<div class="row" >
-			<div class="col-md-6">
-				<%= render :partial => 'fields/text', locals: { f: form_person, model: @member.person, attr: :last_name } %>
-			</div>
-			<div class="col-md-6">
-				<%= render :partial => 'fields/text', locals: { f: form_person, model: @member.person, attr: :first_name } %>
-			</div>
-		</div>
-		<div class="row" >
-			<div class="col-md-6">
-				<div class="form-group">
-					<%= form_person.input :gender,:as => :select, :collection => [[t('gender.male'),true], [t('gender.female'),false]], input_html: { class: 'form-control' } %>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group">
-					<%= form_person.input :nationality, :as => :country, priority: ["DE"], iso_codes: true, input_html: { class: 'form-control' } %>
-					<span class="help-block">Test</span>
-				</div>
-			</div>
-		</div>
-		<div class="row" >
-			<div class="col-md-6">
-				<%= render :partial => 'fields/date', :locals => { f: form_person, model: @member.person, attr: :birth_date } %>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group">
-
-					<%= render :partial => 'fields/text', locals: { f: form_person, model: @member.person, attr: :birth_place } %>
-				</div>
-			</div>
-		</div>
-
-		<div class="row" >
-			<div class="col-md-12">
-				<hr />
-				<%= render :partial => 'fields/text', locals: { f: form_person, model: @member.person, attr: :street } %>
-			</div>
-		</div>
-		<div class="row" >
-			<div class="col-md-4">
-				<%= render :partial => 'fields/text', locals: { f: form_person, model: @member.person, attr: :zip, input_html: { :value => ("%05d" % form_person.object.zip if form_person.object.zip != nil) } } %>
-			</div>
-			<div class="col-md-8">
-				<%= render :partial => 'fields/text', locals: { f: form_person, model: @member.person, attr: :city } %>
-			</div>
-		</div>
-
-		<div class="row" >
-			<div class="col-md-12">
-				<hr />
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title"> <%= t('contacts', count: 1) %>
-						<%= link_to_add_fields form_person, :contacts %> </h3>
-					</div>
-					<div id="contacts-list" class="panel-body">
-						<%= form_person.simple_fields_for :contacts do |form_contact| %>
-						<%= render 'people/contact_fields', :f => form_contact %>
-						<% end %>
-					</div>
-				</div>
-				<hr />
-			</div>
-		</div>
-
-		<%= form_person.simple_fields_for :user do |form_user| %>
-		<div class="row" >
-			<div class="col-md-12">
-				<%= render :partial => 'fields/text', locals: { f: form_user, model: @member.person.user, attr: :email } %>
-			</div>
-		</div>
-		<% end %>
-
-		<% end %>
-
-		<%= form.submit :class => 'btn btn-success' %>
-		<% end %>
 	</div>
 </div>
+
+<%= f.simple_fields_for :person do |f_person| %>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f_person.input :last_name %>
+	</div>
+	<div class="col-md-3">
+		<%= f_person.input :first_name %>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f_person.input :gender,:as => :select, :collection => [[t('gender.male'),true], [t('gender.female'),false]] %>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<%= f_person.input :nationality, :as => :country, priority: ["DE"], iso_codes: true %>
+		</div>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f_person.input :birth_date, as: :date_time_picker %>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+
+			<%= f_person.input :birth_place %>
+		</div>
+	</div>
+</div>
+
+<div class="row" >
+	<div class="col-md-6">
+		<hr />
+	</div>
+</div>
+
+<div class="row" >
+	<div class="col-md-6">
+		<%= f_person.input :street %>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-2">
+		<%= f_person.input :zip, as: :string, input_html: { :value => ("%05d" % f_person.object.zip if f_person.object.zip != nil) } %>
+	</div>
+	<div class="col-md-4">
+		<%= f_person.input :city %>
+	</div>
+</div>
+
+<div class="row" >
+	<div class="col-md-6">
+		<hr />
+	</div>
+</div>
+
+<div class="row" >
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> <%= t('contacts', count: 1) %>
+				<%= link_to_add_fields f_person, :contacts %> </h3>
+			</div>
+			<div id="contacts-list" class="panel-body">
+				<%= f_person.simple_fields_for :contacts do |form_contact| %>
+				<%= render 'people/contact_fields', :f => form_contact %>
+				<% end %>
+			</div>
+		</div>
+		<hr />
+	</div>
+</div>
+
+<%= f_person.simple_fields_for :user do |f_user| %>
+<div class="row" >
+	<div class="col-md-6">
+		<%= f_user.input :email %>
+	</div>
+</div>
+<% end %>
+
+<% end %>
+
+<%= f.submit :class => 'btn btn-success' %>
+<% end %>

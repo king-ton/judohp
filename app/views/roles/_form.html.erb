@@ -1,12 +1,7 @@
 <%= simple_form_for @role do |f| %>
 <div class="row">
 	<div class="col-md-3">
-		<div class="form-group <%= "has-error" if @role.errors[:name].any? %>">
-			<%= f.input :name, required: false, error: false, input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-			<% if @role.errors[:name].any? %>
-			<span class="help-block"><%= @role.errors.full_messages_for(:name).first %></span>
-			<% end %>
-		</div>
+		<%= f.input :name %>
 	</div>
 </div>
 <div class="row">

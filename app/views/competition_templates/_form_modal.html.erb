@@ -4,25 +4,14 @@
 
 	<div class="row" >
 		<div class="col-md-6">
-			<div class="form-group <%= "has-error" if @competition_template.errors[:title].any? %>">
-				<%= f.input :title, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-				<% if @competition_template.errors[:title].any? %>
-				<span class="help-block"><%= @competition_template.errors.full_messages_for(:title).first %></span>
-				<% end %>
-			</div>
+			<%= f.input :title %>
 		</div>
 	</div>
 	<div class="row" >
 		<div class="col-md-6">
-			<div class="form-group <%= "has-error" if @competition_template.errors[:short_name].any? %>">
-				<%= f.input :short_name, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-				<% if @competition_template.errors[:short_name].any? %>
-				<span class="help-block"><%= @competition_template.errors.full_messages_for(:short_name).first %></span>
-				<% end %>
-			</div>
+			<%= f.input :short_name %>
 		</div>
 	</div>
-
 	<div class="row" >
 		<div class="col-md-6">
 			<div class="panel panel-default">
@@ -30,19 +19,14 @@
 					<h3 class="panel-title"> <%= f.label :venue %></h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group <%= "has-error" if @competition_template.errors[:venue_id].any? %>">
-						<%= f.association :venue,  input_html: { class: 'form-control' }, label: false, error: false %>
-						<% if @competition_template.errors[:venue_id].any? %>
-						<span class="help-block"><%= @competition_template.errors.full_messages_for(:venue_id).first %></span>
-						<% end %>
-					</div>
+					<%= f.association :venue %>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="modal-footer">
-	<%= f.button :submit,  :class => 'btn btn-success' %>
+	<%= f.button :submit %>
 	<%= link_to t('views.cancel'), "#", class: "btn", data: {dismiss: "modal"} %>
 </div>
 <% end %>

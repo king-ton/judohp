@@ -4,12 +4,12 @@ $("ul.errors").html("")
 		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
 	<% end %>
 <% else %>
+<% print '########' %>
 	<% if action?('create')%>
-		$('#person_user_id').append($("<option />").html("<%= @user.name %>").attr("value", <%= @person.id %>))
-		$('#member_mum_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
-		$('#member_dad_id').append($("<option />").html("<%= @person.name %>").attr("value", <%= @person.id %>))
-		$('#member_' + focused + '_id option:last-child').attr("selected",true)
-		selectChanged(focused)
+		$('#person_user_id').append($("<option />").html("<%= @user.name %>").attr("value", <%= @user.id %>))
+		selectChanged('person', 'user')
+	<% else %>
+	$('#person_user_id option[value=<%= @user.id %>]').html("<%= @user %>")
 	<% end %>
-	$("#user-modal").remove()
+	$("#user-modal").modal("hide")
 <% end %>

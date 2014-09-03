@@ -43,7 +43,6 @@ class PeopleController < ApplicationController
 
   # PATCH/PUT /people/1
   def update
-
     respond_to do |format|
       format.js do
         @people = Person.all

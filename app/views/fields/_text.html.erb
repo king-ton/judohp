@@ -1,9 +1,0 @@
-<% input_html ||= Hash.new %>
-<% input_html[:class] = 'form-control' %>
-
-<div class="form-group <%= "has-error" if model.errors[attr].any? %>">
-	<%= f.input attr, required: false, error: false,  input_html: input_html, label_html: { class: 'control-label' } %>
-	<% if model.errors[attr].any? %>
-	<span class="help-block"><%= model.errors.full_messages_for(attr).first %></span>
-	<% end %>
-</div>

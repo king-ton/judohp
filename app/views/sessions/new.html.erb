@@ -1,4 +1,4 @@
-<% provide(:title, t('views.session.new.title'))%>
+<% provide(:title, t('.title'))%>
 
 <div class="row">
 	<div class="col-md-3 col-xs-3">
@@ -12,7 +12,7 @@
 			<%= f.label :password, t('activerecord.attributes.user.password'), :class => 'control-label' %>
 			<%= f.password_field :password, :class => 'form-control' %>
 		</div>
-		<%= f.submit t('views.session.new.action'), :class => "btn btn-primary" %>
+		<%= f.submit t('sessions.new.action'), :class => "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>

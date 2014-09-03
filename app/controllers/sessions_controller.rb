@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
     else
-      flash.now[:danger] = t('session.msg.create_error')
+      flash.now[:danger] = t('sessions.msg.create_error')
       render action: 'new'
     end
   end
 
   def destroy
     sign_out
-    flash[:success] = t('session.msg.sign_out')
+    flash[:success] = t('.msg')
     redirect_to root_path
   end
 end

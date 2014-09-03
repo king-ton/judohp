@@ -30,26 +30,43 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
-    if @user.save
-      #sign_in @user
-      flash[:success] = t('.msg')
-      redirect_to @user
-    else
-      set_people
-      render action: 'new'
+    respond_to do |format|
+      format.js do
+        @users = User.all
+        @user = User.create(user_params)
+      end
+      format.html do
+        @user = User.create(user_params)
+
+        if @user.save
+          flash[:success] = t('.msg')
+          redirect_to @user
+        else
+          set_people
+          render action: 'new'
+        end
+      end
     end
   end
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      sign_in @user if current_user == @user
-      flash[:success] = t('.msg')
-      redirect_to @user
-    else
-      set_people
-      render action: 'edit'
+    respond_to do |format|
+      format.js do
+        @users = User.all
+        @user = User.find(params[:id])
+        @user.update_attributes(user_params)
+      end
+      format.html do
+        if @user.update(user_params)
+          sign_in @user if current_user == @user
+          flash[:success] = t('.msg')
+          redirect_to @user
+        else
+          set_people
+          render action: 'edit'
+        end
+      end
     end
   end
 
@@ -62,17 +79,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
   end
-  
+
   def activate
     @user = User.find_by_activation_token(params[:activation_token])
     if @user
       @user.activated = true
-       if @user.save
-         flash[:success] = t("user.activate.success")
-       else
-         flash[:danger] = "Ein Fehler ist aufgetreten."
-       end
-      
+      if @user.save
+        flash[:success] = t("user.activate.success")
+      else
+        flash[:danger] = "Ein Fehler ist aufgetreten."
+      end
+
     else
       flash[:danger] = t("user.activate.error")
     end
@@ -81,10 +98,10 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   #def destroy
-   # if @user.destroy
-    #  flash[:success] = t('views.user.msg.destroyed')
-   # end
-    #redirect_to users_url
+  # if @user.destroy
+  #  flash[:success] = t('views.user.msg.destroyed')
+  # end
+  #redirect_to users_url
   #end
 
   private
@@ -93,14 +110,14 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  
+
   def set_people
     @people = Person.joins("LEFT JOIN users ON users.person_id = people.id WHERE users.person_id IS NULL#{@user && @user.person_id ?  ' OR users.person_id = ' + @user.person_id.to_s : ''}")
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :person_id, { :role_ids => [] })
+    params.require(:user).permit(:email, :password, :password_confirmation, :person_id, { :role_ids => [] })
   end
 
   def correct_user
@@ -108,7 +125,7 @@ class UsersController < ApplicationController
       authorize(User.new)
     end
   end
-  
+
   def skip_password_attribute
     if params[:password].blank? && params[:password_confirmation].blank?
       params.except!(:password, :password_confirmation)
