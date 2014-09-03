@@ -1,38 +1,34 @@
+<%= simple_form_for(@user) do |f| %>
 <div class="row" >
-	<div id="user-form" class="col-md-3">
-		<%= simple_form_for(@user) do |f| %>
-		<div class="form-group <%= "has-error" if @user.errors[:name].any? %>">
-			<%= f.input :name, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-			<% if @user.errors[:name].any? %>
-			<span class="help-block"><%= @user.errors.full_messages_for(:name).first %></span>
-			<% end %>
-		</div>
-		<div class="form-group <%= "has-error" if @user.errors[:email].any? %>">
-			<%= f.input :email, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-			<% if @user.errors[:email].any? %>
-			<span class="help-block"><%= @user.errors.full_messages_for(:email).first %></span>
-			<% end %>
-		</div>
-		<div class="form-group <%= "has-error" if @user.errors[:password].any? %>">
-			<%= f.input :password, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-			<% if @user.errors[:password].any? %>
-			<span class="help-block"><%= @user.errors.full_messages_for(:password).first %></span>
-			<% end %>
-		</div>
-		<div class="form-group <%= "has-error" if @user.errors[:password_confirmation].any? %>">
-			<%= f.input :password_confirmation, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
-			<% if @user.errors[:password_confirmation].any? %>
-			<span class="help-block"><%= @user.errors.full_messages_for(:password_confirmation).first %></span>
-			<% end %>
-		</div>
+	<div class="col-md-3">
+		<%= f.input :email %>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f.input :password %>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f.input :password_confirmation %>
+	</div>
+</div>
+<div class="row" >
+	<div class="col-md-3">
 		<div class="panel panel-primary">
 			<%= render 'role_list', :f => f %>
 		</div>
-
-		<%= f.submit :class => 'btn btn-success' %>
-
-		<% end %>
 	</div>
 </div>
+<div class="row" >
+	<div class="col-md-3">
+		<%= f.association :person, :collection => @people %>
+	</div>
+</div>
+
+<%= f.submit :class => 'btn btn-success' %>
+
+<% end %>
 
 <div id="role-modal" class="modal fade"></div>

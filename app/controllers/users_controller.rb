@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action except: [:show, :edit, :update, :activate] do
     authorize(User.new)
   end
+  before_action :set_people, only: [:new, :edit]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :skip_password_attribute, only: :update
   #after_action :verify_authorized
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
       flash[:success] = t('.msg')
       redirect_to @user
     else
+      set_people
       render action: 'new'
     end
   end
@@ -42,10 +44,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      sign_in @user
+      sign_in @user if current_user == @user
       flash[:success] = t('.msg')
       redirect_to @user
     else
+      set_people
       render action: 'edit'
     end
   end
@@ -66,7 +69,6 @@ class UsersController < ApplicationController
       @user.activated = true
        if @user.save
          flash[:success] = t("user.activate.success")
-         puts "###########################"
        else
          flash[:danger] = "Ein Fehler ist aufgetreten."
        end
@@ -91,10 +93,14 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
+  def set_people
+    @people = Person.joins("LEFT JOIN users ON users.person_id = people.id WHERE users.person_id IS NULL#{@user && @user.person_id ?  ' OR users.person_id = ' + @user.person_id.to_s : ''}")
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, { :role_ids => [] })
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :person_id, { :role_ids => [] })
   end
 
   def correct_user

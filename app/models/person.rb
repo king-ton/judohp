@@ -24,6 +24,7 @@ class Person < ActiveRecord::Base
   has_many :members
   has_many :mums, :class_name => 'Member'
   has_many :dads, :class_name => 'Member'
+  has_one :user
   
   belongs_to :user
   

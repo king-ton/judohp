@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
 <tr>
-	<td><%= user.name %></td>
+	<td><%= (policy(Person.new).show? ? (link_to user.person.name, person_path(user.person)) : user.person.name) if user.person %></td>
 	<td><%= user.email %></td>
 	<td><%= link_to raw("<span class='glyphicon glyphicon-th-list'></span>"), user %></td>
 	<td><%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_user_path(user) %></td>

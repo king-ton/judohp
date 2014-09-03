@@ -31,7 +31,7 @@
 
 				<% if signed_in? %>
 				<li class="dropdown">
-					<a data-toggle="dropdown" href="#"><%= current_user.name %> <b class="caret"></b> </a>
+					<a data-toggle="dropdown" href="#"><%= current_user.person.name %> <b class="caret"></b> </a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 						<li>
 							<%= link_to raw("<span class='glyphicon glyphicon-user'></span> Profil"), current_user %>

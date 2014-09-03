@@ -256,7 +256,7 @@ de:
         name: "Name"
         activities: "Berechtigungen"
       user:
-        name: "Name"
+        person: *person
         email: "E-Mail"
         password: "Passwort"
         password_confirmation: "Passwort-Bestätigung"
@@ -279,6 +279,7 @@ de:
           attributes:
             birth_date:
               blank: "Muss ausgefüllt werden."
+
   views:
     index: "Übersicht"
     show: "Anzeigen"

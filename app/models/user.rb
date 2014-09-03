@@ -19,8 +19,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :people
   
+  belongs_to :person
+  
   # Name
-  validates :name, presence: true
+  validates :person_id, presence: true
 
   # E-Mail
   before_save { |user| user.email = email.downcase }

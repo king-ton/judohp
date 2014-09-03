@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.person.name) %>
 
 <p>
 	<strong><%= t('activerecord.attributes.user.email') %>:</strong>
@@ -9,5 +9,10 @@
 	<% @user.roles.each do |role| %>
 	<%= link_to role.name, role_path(role) %><%= ", " if @user.roles.last != role %>
 	<% end %>
+</p>
+
+<p>
+	<strong><%= t('people', count: 1) %>:</strong>
+	<%= link_to @user.person.name, person_path(@user.person) %>
 </p>
 
