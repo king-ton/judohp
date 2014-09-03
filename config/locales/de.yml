@@ -9,12 +9,16 @@ de:
       title: "Altersklassen-Übersicht"
     show:
       action: Altersklasse-Details anzeigen
-    edit:
-      title: "Altersklasse bearbeiten"
-      action: "Altersklasse aktualisieren"
     new:
       title: "Neuer Altersklasse"
       action: "Altersklasse erstellen"
+    create:
+      msg: "Die Altersklasse wurde erfolgreich erstellt."
+    edit:
+      title: "Altersklasse bearbeiten"
+      action: "Altersklasse aktualisieren"
+    update:
+      msg: "Die Altersklasse wurde erfolgreich aktualisiert."
     delete:
       title: "Altersklasse löschen"
       action: "Altersklasse löschen"
@@ -145,9 +149,9 @@ de:
       action: "Anmelden"
     destroy:
       action: "Abmelden"
+      msg: "Sie wurden erfolgreich abgemeldet." 
     msg:
       create_error: "Ungültige E-Mail/Passwort Kombination"
-      sign_out: "Sie wurden erfolgreich abgemeldet." 
   users:
     one: &user "Benutzer"
     other: &users "Benutzer"
@@ -211,6 +215,10 @@ de:
       user: *user
       venue: *venue
     attributes:
+      age_class:
+        name: "Name"
+        min_age: "Mindestalter"
+        max_age: "Höchstalter"
       competition:
         title: "Bezeichnung"
         start_date: "Datum"

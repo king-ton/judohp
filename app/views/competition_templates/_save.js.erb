@@ -1,0 +1,21 @@
+$("ul.errors").html("")
+<% if @competition_template.errors.any? %>
+	<% @competition_template.errors.full_messages.each do |message| %>
+		$("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+	<% end %>
+<% else %>
+	var msg = ""
+	<% if action?('create')%>
+		$('#competition_competition_template_id').append($("<option />").html("<%= @competition_template.title %>").attr("value", <%= @competition_template.id %>))
+		$('#competition_competition_template_id option:last-child').attr("selected",true)
+		selectChanged('venue', 'competition_template')
+		msg = "<%= I18n.translate("competition_templates.create.msg") %>"
+	<% else %>
+		$('#competition_competition_template_id option[value=<%= @competition_template.id %>]').html("<%= @competition_template.title %>")
+		msg = "<%= I18n.translate("competition_templates.update.msg") %>"
+	<% end %>
+	$(".alert").remove()
+	$("<div class='alert alert-success alert-dismissable fade in'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + msg + "</div>").insertAfter(".page-header")
+
+	$("#competition_template-modal").modal("hide")
+<% end %>

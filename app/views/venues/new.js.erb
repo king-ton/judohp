@@ -1,2 +1,7 @@
+if ($("#venue-modal").length == 0) {
+	$(document.body).append('<div id="venue-modal" class="modal fade"></div>');
+}
+
+var model = /_(.+)/.exec($('form').attr('class').split(" ").pop())[1]
 $("#venue-modal").html("<%= escape_javascript(render 'new') %>")
 $("#venue-modal").modal("show")

@@ -1,0 +1,8 @@
+$("#competition_template-modal").html("<%= escape_javascript(render 'edit') %>")
+$("#competition_template-modal").modal("show")
+
+selectChanged('venue', 'competition_template');
+
+$('#person_user_id').change(function() {
+	selectChanged('venue', 'competition_template');
+});

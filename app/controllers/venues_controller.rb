@@ -30,7 +30,7 @@ class VenuesController < ApplicationController
       format.html do
         @venue = Venue.new(venue_params)
 
-        if @person.save
+        if @venue.save
           flash[:success] = t('.msg')
           redirect_to @venue
         else

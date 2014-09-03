@@ -6,12 +6,12 @@ $("ul.errors").html("")
 <% else %>
 	var msg = ""
 	<% if action?('create')%>
-		$('#competition_template_venue_id').append($("<option />").html("<%= @venue.name %>").attr("value", <%= @venue.id %>))
-		$('#competition_template_venue_id option:last-child').attr("selected",true)
-		selectChanged('venue', 'competition_template')
+		$('#' + model + '_venue_id').append($("<option />").html("<%= @venue.name %>").attr("value", <%= @venue.id %>))
+		$('#' + model + '_venue_id option:last-child').attr("selected",true)
+		selectChanged('venue', model)
 		msg = "<%= I18n.translate("venues.create.msg") %>"
 	<% else %>
-		$('#competition_template_venue_id option[value=<%= @venue.id %>]').html("<%= @venue.name %>")
+		$('.venue-control option[value=<%= @venue.id %>]').html("<%= @venue.name %>")
 		msg = "<%= I18n.translate("venues.update.msg") %>"
 	<% end %>
 	$(".alert").remove()

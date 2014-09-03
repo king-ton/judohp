@@ -22,24 +22,42 @@ class CompetitionTemplatesController < ApplicationController
 
   # POST /competition_templates
   def create
-    @competition_template = CompetitionTemplate.new(competition_template_params)
+    respond_to do |format|
+      format.js do
+        @competition_templates = CompetitionTemplate.all
+        @competition_template = CompetitionTemplate.create(competition_template_params)
+      end
+      format.html do
+        @competition_template = CompetitionTemplate.new(competition_template_params)
 
-    if @competition_template.save
-      flash[:success] = t('.msg')
-      redirect_to @competition_template
-    else
-      render :new
+        if @competition_template.save
+          flash[:success] = t('.msg')
+          redirect_to @competition_template
+        else
+          render action: 'new'
+        end
+      end
     end
   end
 
   # PATCH/PUT /competition_templates/1
   def update
-      if @competition_template.update(competition_template_params)
-        flash[:success] = t('.msg')
-        redirect_to @competition_template
-      else
-        render :edit
+    respond_to do |format|
+      format.js do
+        @competition_templates = CompetitionTemplate.all
+        @competition_template = CompetitionTemplate.find(params[:id])
+        @competition_template.update_attributes(competition_template_params)
       end
+
+      format.html do
+        if @competition_template.update(competition_template_params)
+          flash[:success] = t('.msg')
+          redirect_to @competition_template
+        else
+          render action: 'edit'
+        end
+      end
+    end
   end
 
   # DELETE /competition_templates/1
