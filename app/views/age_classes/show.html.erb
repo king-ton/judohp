@@ -1,19 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @age_class.name) %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.age_class.name') %>:</strong>
   <%= @age_class.name %>
 </p>
 
 <p>
-  <strong>Min age:</strong>
+  <strong><%= t('activerecord.attributes.age_class.min_age') %>:</strong>
   <%= @age_class.min_age %>
 </p>
 
 <p>
-  <strong>Max age:</strong>
+  <strong><%= t('activerecord.attributes.age_class.max_age') %>:</strong>
   <%= @age_class.max_age %>
 </p>
-
-<%= link_to 'Edit', edit_age_class_path(@age_class) %> |
-<%= link_to 'Back', age_classes_path %>

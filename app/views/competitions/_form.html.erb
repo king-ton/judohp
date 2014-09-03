@@ -61,7 +61,7 @@
 			</div>
 			<div class="panel-body">
 				<div class="form-group <%= "has-error" if @competition.errors[:competition_template_id].any? %>">
-					<%= f.association :competition_template,  input_html: { class: 'form-control' }, label: false, error: false %>
+					<%= f.association :competition_template,  input_html: { class: 'form-control competition_template-control' }, label: false, error: false %>
 					<% if @competition.errors[:competition_template_id].any? %>
 					<span class="help-block"><%= @competition.errors.full_messages_for(:competition_template_id).first %></span>
 					<% end %>
@@ -70,10 +70,17 @@
 		</div>
 	</div>
 </div>
+<div class="row" >
+	<div class="col-md-3">
+		<div class="panel panel-primary">
+			<%= render 'age_class_list', :f => f %>
+		</div>
+	</div>
+</div>
 
 <%= f.submit :class => 'btn btn-success' %>
 
 <% end %>
 
-<div id="venue-modal" class="modal fade"></div>
+<div id="competition_template-modal" class="modal fade"></div>
 

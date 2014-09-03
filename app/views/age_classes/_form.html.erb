@@ -1,13 +1,33 @@
 <%= simple_form_for(@age_class) do |f| %>
-  <%= f.error_notification %>
+  <div class="row" >
+	<div class="col-md-3">
+		<div class="form-group <%= "has-error" if @age_class.errors[:name].any? %>">
+			<%= f.input :name, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+			<% if @age_class.errors[:name].any? %>
+			<span class="help-block"><%= @age_class.errors.full_messages_for(:name).first %></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+  <div class="row" >
+	<div class="col-md-2">
+		<div class="form-group <%= "has-error" if @age_class.errors[:min_age].any? %>">
+			<%= f.input :min_age, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+			<% if @age_class.errors[:min_age].any? %>
+			<span class="help-block"><%= @age_class.errors.full_messages_for(:min_age).first %></span>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div class="form-group <%= "has-error" if @age_class.errors[:max_age].any? %>">
+			<%= f.input :max_age, required: false, error: false,  input_html: { class: 'form-control' }, label_html: { class: 'control-label' } %>
+			<% if @age_class.errors[:max_age].any? %>
+			<span class="help-block"><%= @age_class.errors.full_messages_for(:max_age).first %></span>
+			<% end %>
+		</div>
+	</div>
+</div>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :min_age %>
-    <%= f.input :max_age %>
-  </div>
+<%= f.submit :class => 'btn btn-success' %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
 <% end %>

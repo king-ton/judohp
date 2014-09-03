@@ -1,0 +1,13 @@
+<% allow_show = policy(AgeClass.new).show? %>
+<% allow_edit = policy(AgeClass.new).edit? %>
+<% allow_delete = policy(AgeClass.new).delete? %>
+<% @age_classes.each do |age_class| %>
+<tr>
+	<td><%= age_class.name %></td>
+	<td><%= age_class.min_age %></td>
+	<td><%= age_class.max_age %></td>
+	<%= link_to_show age_class, :wrap => 'td', :allow => allow_show %>
+	<%= link_to_edit age_class, :wrap => 'td', :allow => allow_edit %>
+	<%= link_to_delete age_class, :wrap => 'td', :allow => allow_delete %>
+</tr>
+<% end %>

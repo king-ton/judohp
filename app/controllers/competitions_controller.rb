@@ -16,10 +16,12 @@ class CompetitionsController < ApplicationController
   # GET /competitions/new
   def new
     @competition = Competition.new
+    @age_classes = AgeClasses.find(:all, :order => "min_age, max_age, name")
   end
 
   # GET /competitions/1/edit
   def edit
+    @age_classes = AgeClass.all.order("min_age, max_age, name")
   end
 
   # POST /competitions
@@ -64,6 +66,6 @@ class CompetitionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def competition_params
-    params.require(:competition).permit(:title, :start_date, :end_date, :venue_id, :competition_template_id)
+    params.require(:competition).permit(:title, :start_date, :end_date, :venue_id, :competition_template_id, { :age_class_ids => [] })
   end
 end

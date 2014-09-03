@@ -1,8 +1,8 @@
 class CreateJoinCompetitionsAgeClasses < ActiveRecord::Migration
   def change
-    create_table :competitions_age_classes, id: false do |t|
-      t.integer :competition_id
+    create_table :age_classes_competitions, id: false do |t|
       t.integer :age_class_id
+      t.integer :competition_id
     end
   end
 end

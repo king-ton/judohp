@@ -1,0 +1,9 @@
+<div class="panel-heading">
+	<h3 class="panel-title"> <%= t('age_classes', count: 2) %></h3>
+
+</div>
+<div id="age_class-list" class="panel-body">
+	<%= f.collection_check_boxes :age_class_ids, @age_classes, :id, :name, {:item_wrapper_tag => :div, :item_wrapper_class => 'checkbox'} do |b| %>
+	<% b.label(:class => 'control-label') { b.check_box + b.text } %>
+	<% end %>
+</div>

@@ -23,3 +23,10 @@
   <% if policy(CompetitionTemplate.new).show? %><%= link_to @competition.competition_template.short_name, competition_template_path(@competition.competition_template) %> <% else %> <%= @competition.competition_template.short_name %><% end %></td>
 	
 </p>
+
+<p>
+	<strong><%= t('age_classes', count: @competition.age_classes.count) %>:</strong>
+	<% @competition.age_classes.each do |age_class| %>
+	<%= link_to age_class.name, age_class_path(age_class) %><%= ", " if @competition.age_classes.last != age_class %>
+	<% end %>
+</p>
