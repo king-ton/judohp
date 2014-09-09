@@ -3,6 +3,9 @@ de:
     placeholders:
       members:
         member_number: 'z.B. 2014-001'
+    hints:
+      person:
+        birth_date: "Wird bei neuem Benutzer benötigt!"
     required:
       text: 'benötigt'
       mark: '*'

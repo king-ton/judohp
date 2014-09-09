@@ -90,6 +90,8 @@ de:
     edit:
       title: "Mitglied bearbeiten"
       action: "Mitglied aktualisieren"
+    update:
+      msg: "Das Mitglied wurde erfolgreich aktualisiert."
     delete:
       action: "Mitglied löschen"
      
@@ -241,6 +243,7 @@ de:
         person: *person
         mum: "Mutter"
         dad: "Vater"
+        user: *user
       person:
         last_name: "Nachname"
         first_name: "Vorname"

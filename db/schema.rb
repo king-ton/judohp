@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903181536) do
+ActiveRecord::Schema.define(version: 20140909152652) do
 
   create_table "age_classes", force: true do |t|
     t.string   "name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140903181536) do
     t.integer  "mum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "members", ["member_number"], name: "index_members_on_member_number", using: :btree
@@ -79,7 +80,6 @@ ActiveRecord::Schema.define(version: 20140903181536) do
     t.string   "street"
     t.integer  "zip"
     t.string   "city"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "nationality"

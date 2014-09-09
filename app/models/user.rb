@@ -17,12 +17,13 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
-  has_many :people
-  
+  has_many :members
   belongs_to :person
   
+  accepts_nested_attributes_for :person
+  
   # Name
-  validates :person_id, presence: true
+  validates :person, presence: true
 
   # E-Mail
   before_save { |user| user.email = email.downcase }
@@ -42,7 +43,11 @@ class User < ActiveRecord::Base
   before_create :create_activation_token
 
   def to_s
-    person ? person.name : email
+    person ? (person.name + " (" + email + ")") : email
+  end
+  
+  def active_members
+    Member.where("user_id = #{id} AND (members.exit IS NULL OR members.exit >= '#{Date.today}')").order(:member_number)
   end
 
   private

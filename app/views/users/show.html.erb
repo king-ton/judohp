@@ -16,3 +16,10 @@
 	<%= link_to @user.person.name, person_path(@user.person) %>
 </p>
 
+<p>
+	<strong><%= t('members', count: @members) %>:</strong>
+	<% @members.each do |member| %>
+	<%= link_to member, member_path(member) %><%= ", " if @members.last != member %>
+	<% end %>
+</p>
+

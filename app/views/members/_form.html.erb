@@ -8,18 +8,18 @@
 
 <div class="row" >
 	<div class="col-md-3">
-		<%= f.input :entry, as: :date_time_picker %>
+		<%= f.input :entry, as: :date_time_picker, class: "month" %>
 	</div>
 	<div class="col-md-3">
-		<%= f.input :exit, as: :date_time_picker %>
+		<%= f.input :exit, as: :date_time_picker, class: "month" %>
 	</div>
 </div>
 <div class="row" >
 	<div class="col-md-3">
-		<%= f.input :entry_federation, as: :date_time_picker %>
+		<%= f.input :entry_federation, as: :date_time_picker, class: "month" %>
 	</div>
 	<div class="col-md-3">
-		<%= f.input :exit_federation, as: :date_time_picker %>
+		<%= f.input :exit_federation, as: :date_time_picker, class: "month" %>
 	</div>
 </div>
 
@@ -79,6 +79,27 @@
 				<div class="form-group">
 					<%= f.association :dad, label: false %>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" >
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title"> <%= f.label :user %>
+				<div class="pull-right">
+					<% if policy(User.new).new? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-plus green'></span>"), new_user_path, remote: true, id: "user" %>
+					<% end %>
+					<% if policy(User.new).edit? %>
+					<%= link_to raw("<span class='glyphicon glyphicon-pencil yellow'></span>"), edit_user_path(1), class: "hidden user-edit", remote: true %>
+					<% end %>
+				</div></h3>
+			</div>
+			<div class="panel-body">
+				<%= f.association :user,  label: false %>
 			</div>
 		</div>
 	</div>

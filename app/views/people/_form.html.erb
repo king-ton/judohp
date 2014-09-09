@@ -14,7 +14,7 @@
 </div>
 <div class="row" >
 	<div class="col-md-3">
-		<%= f.input :birth_date, as: :date_time_picker %>
+		<%= f.input :birth_date, as: :date_time_picker, hint: false %>
 	</div>
 	<div class="col-md-3">
 			<%= f.input :birth_place, input_html: { class: 'form-control' } %>
@@ -51,12 +51,6 @@
 			</div>
 		</div>
 		<hr />
-	</div>
-</div>
-
-<div class="row" >
-	<div class="col-md-3">
-		<%= f.association :user %>
 	</div>
 </div>
 

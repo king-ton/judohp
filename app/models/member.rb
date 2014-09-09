@@ -16,17 +16,28 @@
 #
 class Member < ActiveRecord::Base
   before_destroy :check_person_is_member
-
+  
   belongs_to :person
-  belongs_to :mum, class_name: "Person"
-  belongs_to :dad, class_name: "Person"
+  belongs_to :mum,    class_name: "Person"
+  belongs_to :dad,    class_name: "Person"
+  belongs_to :user
   
   accepts_nested_attributes_for :person
+  accepts_nested_attributes_for :user
 
-  validates :person, :presence => true
-  validates :member_number, :presence => true, format: { with: /\A\d{4}-\d{3}\z/ }, :uniqueness => true
-  validates :entry, :presence => true
-  validate :exit_after_entry
+  validates   :person,        :presence => true
+  #validates   :user,          :presence => true
+  validates   :member_number, :presence => true, format: { with: /\A\d{4}-\d{3}\z/ }, :uniqueness => true
+  validates   :entry,         :presence => true
+  validate    :exit_after_entry
+
+  def active?
+    self.exit == nil or self.exit >= Date.today ? true : false
+  end
+  
+  def to_s
+    "#{person.name} (#{member_number})"
+  end
 
   private
   def check_person_is_member

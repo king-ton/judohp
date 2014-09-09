@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     authorize(@user) if !current_user?(@user)
+    @members = @user.active_members
   end
 
   # GET /users/new

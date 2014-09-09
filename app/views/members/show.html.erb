@@ -29,15 +29,19 @@
 
 <p>
   <strong><%= t('activerecord.attributes.member.person') %>:</strong>
-  <%= link_to @member.person.name, person_path(@member.person) %>
+  <%= link_to @member.person, person_path(@member.person) %>
 </p>
 
 <p>
   <strong><%= t('activerecord.attributes.member.dad') %>:</strong>
-  <%= @member.dad.name if @member.dad %>
+  <%= link_to @member.dad, person_path(@member.dad) if @member.dad %>
 </p>
 
 <p>
   <strong><%= t('activerecord.attributes.member.mum') %>:</strong>
-  <%= @member.mum.name if @member.mum %>
+  <%= link_to @member.mum, person_path(@member.mum) if @member.mum %>
+</p>
+<p>
+  <strong><%= t('activerecord.attributes.member.user') %>:</strong>
+  <%= link_to @member.user, user_path(@member.user) if @member.user %>
 </p>

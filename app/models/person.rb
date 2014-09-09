@@ -16,7 +16,6 @@
 #  updated_at  :datetime
 #  nationality :string(255)
 #
-
 class Person < ActiveRecord::Base
   before_destroy :check_person_is_member
 
@@ -25,28 +24,31 @@ class Person < ActiveRecord::Base
   has_many :mums, :class_name => 'Member'
   has_many :dads, :class_name => 'Member'
   has_one :user
-  
-  belongs_to :user
-  
+
   accepts_nested_attributes_for :contacts, :reject_if => lambda { |a| a[:name].blank? && a[:number].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :user
-  
+
   validates :last_name, presence: true
   validates :first_name, presence: true
-  
-  
   def name
     "#{first_name} #{last_name}"
+  end
+  def to_s
+    name
+  end
+
+  def active_member?
+    self.members.each do |member|
+      return true if member.active
+    end
   end
 
   private
 
   def check_person_is_member
-    status = true
     if self.members.count > 0
       self.errors[:deletion_status] = I18n.t('activerecord.errors.models.person.has_member')
-    status = false
+      return false
     end
-    status
+    return true
   end
 end
