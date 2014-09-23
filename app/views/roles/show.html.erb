@@ -6,7 +6,7 @@
 	<li class="list-group-item">
 		<strong><%= t("#{a[0].pluralize}", count: 2) %>:</strong>
 		<% a[1].each do |act| %>
-		<%= t("#{act.split(':')[0].pluralize}.#{act.split(':')[1]}.action").gsub(/#{t("views.#{a[0]}", :count => 2)}-?\s?/, '').gsub(/#{t("views.#{a[0]}", :count => 1)}-?\s?/, '').capitalize %><%= ", " if a[1].last != act %>
+		<%= t("#{act.split(':')[0].pluralize}.#{act.split(':')[1]}.action").gsub(/#{t("#{a[0].pluralize}", :count => 2)}-?\s?/, '').gsub(/#{t("#{a[0].pluralize}", :count => 1)}-?\s?/, '').capitalize %><%= ", " if a[1].last != act %>
 
 		<% end %>
 	</li>

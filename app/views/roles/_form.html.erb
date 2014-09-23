@@ -15,7 +15,7 @@
 			<div  class="panel-body">
 
 				<%= f.collection_check_boxes :activities, a[1], :to_s, :to_s, {:item_wrapper_tag => :div, :item_wrapper_class => 'checkbox'} do |b| %>
-				<% b.label(:class => 'control-label') { b.check_box+ t("#{b.text.split(':')[0].pluralize}.#{b.text.split(':')[1]}.action").gsub(/#{t("views.#{a[0]}", :count => 2)}-?\s?/, '').gsub(/#{t("views.#{a[0]}", :count => 1)}-?\s?/, '').capitalize } %>
+				<% b.label(:class => 'control-label') { b.check_box+ t("#{b.text.split(':')[0].pluralize}.#{b.text.split(':')[1]}.action").gsub(/#{t("#{a[0].pluralize}", :count => 2)}-?\s?/, '').gsub(/#{t("#{a[0].pluralize}", :count => 1)}-?\s?/, '').capitalize } %>
 				<% end %>
 			</div>
 		</div>
