@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :delete]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action except: [:show, :edit, :update, :activate] do
     authorize(User.new)
   end
@@ -72,6 +72,7 @@ class UsersController < ApplicationController
   end
 
   def delete
+    @user = User.find(params[:user_id])
   end
 
   # DELETE /roles/1

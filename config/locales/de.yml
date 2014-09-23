@@ -73,6 +73,7 @@ de:
       
   contacts:
     one: Kontakt-Daten
+    
   members:
     one: &member "Mitglied"
     other: &members "Mitglieder"
@@ -94,6 +95,7 @@ de:
       msg: "Das Mitglied wurde erfolgreich aktualisiert."
     delete:
       action: "Mitglied löschen"
+      title: "Mitglied löschen"
      
   people:
     one: &person "Person"
@@ -154,6 +156,7 @@ de:
       msg: "Sie wurden erfolgreich abgemeldet." 
     msg:
       create_error: "Ungültige E-Mail/Passwort Kombination"
+      
   users:
     one: &user "Benutzer"
     other: &users "Benutzer"
@@ -182,6 +185,14 @@ de:
       error: "Kein Benutzer-Konto mit diesem Aktivierungs-Code vorhanden."
     self:
       action: "Eigenes Profil bearbeiten"
+
+  member_mailer:
+    new_member:
+      subject: "Neue Mitgliedschaft bei Testus e.V."
+      
+  user_mailer:
+    welcome_email:
+      subject: "Neuer Benutzer-Account bei JudoHP"
 
   venues:
     one: &venue "Veranstaltungsort"

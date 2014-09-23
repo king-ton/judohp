@@ -15,8 +15,6 @@
 #  updated_at       :datetime
 #
 class Member < ActiveRecord::Base
-  before_destroy :check_person_is_member
-  
   belongs_to :person
   belongs_to :mum,    class_name: "Person"
   belongs_to :dad,    class_name: "Person"
@@ -40,14 +38,6 @@ class Member < ActiveRecord::Base
   end
 
   private
-  def check_person_is_member
-    status = true
-    if self.security_users.count > 0
-      self.errors[:deletion_status] = 'Cannot delete security role with active users in it.'
-    status = false
-    end
-    status
-  end
 
   def exit_after_entry
     errors.add(:exit, I18n.t('activerecord.errors.models.member.attributes.exit.before_entry')) if exit && entry && exit < entry

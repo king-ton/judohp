@@ -1,10 +1,8 @@
 class UserMailer < ActionMailer::Base
   default from: "JudoHP <judohp@tonifreitag.de>"
   
-  def welcome_email(user, password=nil)
+  def welcome_email(user)
     @user = user
-    @url = signin_path
-    @password
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail to: @user.email
   end
 end

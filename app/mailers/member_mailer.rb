@@ -3,6 +3,6 @@ class MemberMailer < ActionMailer::Base
   
   def new_member(member)
     @member = member
-    mail(to: member.person.user.email, subject: 'Mitgliedschaft bei Testus e.V.')
+    mail to: @member.user.email
   end
 end

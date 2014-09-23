@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Herzlich Willkommen auf JudoHP</title>
 		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+		<style type="text/css">
+			body {
+				font-family: "Comic Sans MS", cursive, sans-serif;
+			}
+		</style>
 	</head>
-	<body>
-		<h1>Welcome to example.com, <%= @user.name %></h1>
+	<body >
+		<h1>Herzlich Willkommen <%= @user.name %>,</h1>
 		<p>
-			You have successfully signed up to example.com,
-			your username is: <%= @user.email %>.
+			Für Sie wurde sie wurde auf JudoHP ein Benutzer-Account angelegt mit folgenden Zugangsdaten:
 			<br>
-			<% if @password == nil %>
-			Password: <%= @user.password %>
-			<% end %>
+			E-Mail: <%= @user.email %>.
+			<br>
+			Password: &lt;Geburtsdatum&gt; (Z.B. <%= Date.today %>)
 		</p>
 		<p>
-			To login to the site, just follow this link: <%= @url %>.
+			Zum Anmelden gehen Sie einfach auf folgene Seite: <%= link_to signin_url, signin_url %>.
 		</p>
 		<p>
-			Thanks for joining and have a great day!
+			Vielen Dank!
 		</p>
 	</body>
 </html>

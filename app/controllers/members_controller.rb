@@ -1,10 +1,10 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member,  only: [:show, :edit, :update, :destroy]
+  before_action :set_members, only: [:index, :destroy]
   before_action { authorize(Member.new) }
 
   # GET /members
   def index
-    @members = Member.all().order(:member_number)
   end
 
   # GET /members/1
@@ -36,12 +36,10 @@ class MembersController < ApplicationController
     end
     @member.user = user
     if @member.save
-      #UserMailer.welcome_email(@member.person.user).deliver
+      MemberMailer.new_member(@member).deliver
       flash[:success] = t('.msg')
       redirect_to @member
     else
-      puts '########'
-      puts user.new_record?
       @member.person.errors.add_on_blank(:birth_date) if user.new_record? && !@member.person.birth_date && @member.user.email != ''
       @member.user.id = ''
       if User.find_by_email(@member.user.email)
@@ -61,12 +59,13 @@ class MembersController < ApplicationController
     end
   end
 
+  def delete
+    @member = Member.find(params[:member_id])
+  end
+
   # DELETE /members/1
   def destroy
     @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url }
-    end
   end
 
   private
@@ -74,6 +73,9 @@ class MembersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_member
     @member = Member.find(params[:id])
+  end
+  def set_members
+    @members = Member.all().order(:member_number)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

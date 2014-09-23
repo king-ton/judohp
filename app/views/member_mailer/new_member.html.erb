@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Mitliedschaft bei Testus e.V.</title>
 		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+		<style type="text/css">
+			body {
+				font-family: "Comic Sans MS", cursive, sans-serif;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Herzlich Willkommen bei Testus e.V.,</h1>
 		<p>
-			Hier finden sie ihre Mitgliedsdaten im Überblick:
+			Hier finden sie ihre Mitgliedsdaten im Überblick:<br>
 			<br>
-				Mitgliedsnummer:	<%= @member.member_number %>
-				Eintritt:			<%= l @member.entry %>
-			
-				Vorname: 			<%= @member.person.first_name %>
-				Nachname:			<%= @member.person.last_name %>
-			
-				Geschlecht:			<%= @member.person.gender %>
-				Nationalität:		<%= @member.person.nationality %>
-			
-				Geburtsdatum:		<%= l @member.person.birth_date %>
-				Geburtsort:			<%= @member.person.birth_place %>
-			
-				Adresse:			<%= @member.person.street %>
-									<%= @member.person.zip %> <%= @member.person.city %>
+			Mitgliedsnummer:	<%= @member.member_number %><br>
+			Eintritt:			<%= l @member.entry %><br>
+			<br>
+			Vorname: 			<%= @member.person.first_name %><br>
+			Nachname:			<%= @member.person.last_name %><br>
+			<br>
+			Geschlecht:			<%= @member.person.gender %><br>
+			Nationalität:		<%= @member.person.nationality %><br>
+			<br>
+			Geburtsdatum:		<%= l @member.person.birth_date %><br>
+			Geburtsort:			<%= @member.person.birth_place %><br>
+			<br>
+			Adresse:			<%= @member.person.street %><br>
+			<%= @member.person.zip %> <%= @member.person.city %><br>
 		</p>
 		<p>
 			Bitte überprüfen sie die Daten. Bei Fehlern, antworten sie einfach auf diese E-Mail.
@@ -31,7 +37,7 @@
 			finden sie in einer weiteren E-Mail, die wir bereits an sie versandt haben.
 		</p>
 		<p>
-			Mit freundlichen Grüßen
+			Mit freundlichen Grüßen<br>
 			Der Vorstand des Testus e.V.
 		</p>
 	</body>

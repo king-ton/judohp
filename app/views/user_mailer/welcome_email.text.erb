@@ -1,0 +1,10 @@
+Herzlich Willkommen <%= @user.name %>,
+
+Für sie wurde Sie wurde auf JudoHP ein Benutzer-Account angelegt mit folgenden Zugangsdaten:
+
+E-Mail: <%= @user.email %>.
+Password: <Geburtsdatum> (Z.B. <%= Date.today %>)
+
+Zum Anmelden gehen Sie einfach auf folgene Seite: <%= link_to signin_url, signin_url %>.
+
+Vielen Dank!

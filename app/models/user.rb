@@ -41,9 +41,13 @@ class User < ActiveRecord::Base
   
   # Aktivierungs-Code
   before_create :create_activation_token
+  after_create { UserMailer.welcome_email(self).deliver }
 
   def to_s
     person ? (person.name + " (" + email + ")") : email
+  end
+  def name
+    person.name
   end
   
   def active_members

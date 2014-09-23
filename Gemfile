@@ -115,3 +115,9 @@ gem 'brakeman', group: [:test]
 gem 'simplecov', group: [:test]
 gem 'simplecov-rcov', group: [:test]
 
+####################
+# Mails
+
+gem 'premailer-rails'
+gem 'roadie-rails'
+
