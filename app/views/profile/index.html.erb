@@ -1,0 +1,57 @@
+<% provide(:title, @user.name)%>
+<% provide(:action_link, content_tag('li', link_to(raw("<span class='glyphicon glyphicon-pencil'></span> #{t('profile.change_password')}"), change_password_path)))%>
+
+<div class="row">
+	<div class="col-md-7">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.last_name') %></strong></td>
+					<td><%= @user.person.last_name %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.first_name') %></strong></td>
+					<td><%= @user.person.first_name %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.gender') %></strong></td>
+					<td><%= @user.person.gender ? t('gender.male') : t('gender.female') %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.birth_date') %></strong></td>
+					<td><%= l @user.person.birth_date if @user.person.birth_date %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.birth_place') %></strong></td>
+					<td><%= @user.person.birth_place %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.address') %></br></strong></td>
+					<td><%= @user.person.street %></br><%= "%05d" % @user.person.zip if @user.person.zip != nil %> <%= @user.person.city %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.user.email') %></br></strong></td>
+					<td><%= @user.email %></td>
+				</tr>
+				<% @user.person.contacts.each do |contact| %>
+				<tr>
+					<td><strong><%= contact.name %></br></strong></td>
+					<td><%= contact.number %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<% if !@members.nil? %>
+	<div class="col-md-5">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h3>Verwaltbare Mitglieder</h3></div>
+			<div class="list-group">
+				<% @members.each do |member| %>
+				<%= link_to member, profile_member_path(member.member_number), :class => "list-group-item" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>

@@ -94,4 +94,16 @@ module ApplicationHelper
       end
     end
   end
+  
+  def errors_for(object)
+    html = ''
+    if object.errors.any?
+      html << "<div class='alert alert-danger' role='alert'>\n\t<ul>\n"
+      object.errors.full_messages.each do |msg|
+        html << "\t\t<li>#{msg}</li>\n"
+      end
+      html << "\t</ul>\n</div>\n"
+    end
+    html.html_safe
+  end
 end

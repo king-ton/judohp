@@ -1,5 +1,20 @@
 de:
   
+  button_change: Ändern
+  
+  error_member_not_found: Mitglied nicht gefunden.
+  
+  field_confirmation: Bestätigung
+  field_new_password: Neues Kennwort
+  field_member_state: Mitgliedschaftsstatus
+  
+  label_member_active: Aktiv
+  label_member_inactive: Gekündigt
+  label_member_warning: Aktiv (gekündigt)
+  
+  notice_sign_in: Bitte vorher anmelden.
+  notice_user_password_updated: Kennwort wurde erfolgreich aktualisiert.
+  
   age_classes:
     one: &age_class "Altersklasse"
     other: &age_classes "Altersklassen"
@@ -121,6 +136,11 @@ de:
       action: "Person löschen"
     msg:
       destroyed: "Die Person wurde erfolgreich gelöscht."
+      
+  profile:
+    one: "Profil"
+    password: &password "Passwort"
+    change_password: "Passwort ändern"
       
   roles:
     one: &role "Rolle"
@@ -262,6 +282,7 @@ de:
         nationality: "Nationalität"
         birth_date: "Geburtsdatum"
         birth_place: "Geburtsort"
+        address: "Adresse"
         street: "Straße"
         zip: "Postleitzahl"
         city: "Wohnort"
@@ -272,8 +293,8 @@ de:
       user:
         person: *person
         email: "E-Mail"
-        password: "Passwort"
-        password_confirmation: "Passwort-Bestätigung"
+        password: *password
+        password_confirmation: "Bestätigung"
       venue:
         name: 'Name'
         street: 'Straße'
@@ -281,6 +302,8 @@ de:
         city: 'Wohnort'
         
     errors:
+      messages:
+        confirmation: "stimmt nicht mit der Bstätigung überein"
       models:
         member:
           attributes:
@@ -293,7 +316,11 @@ de:
           attributes:
             birth_date:
               blank: "Muss ausgefüllt werden."
-
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "stimmt nicht mit dem Passwort überein."
+        
   views:
     index: "Übersicht"
     show: "Anzeigen"

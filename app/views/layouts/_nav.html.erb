@@ -34,10 +34,7 @@
 					<a data-toggle="dropdown" href="#"><%= current_user.person.name %> <b class="caret"></b> </a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 						<li>
-							<%= link_to raw("<span class='glyphicon glyphicon-user'></span> Profil"), current_user %>
-						</li>
-						<li>
-							<%= link_to raw("<span class='glyphicon glyphicon-cog'></span> Einstellungen"), edit_user_path(current_user) %>
+							<%= link_to raw("<span class='glyphicon glyphicon-user'></span> #{t('profile', count: 1)}"), profile_path %>
 						</li>
 						<li class="divider"></li>
 						<li>

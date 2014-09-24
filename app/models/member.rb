@@ -36,6 +36,30 @@ class Member < ActiveRecord::Base
   def to_s
     "#{person.name} (#{member_number})"
   end
+  
+  def state
+    if self.exit
+      if self.exit < Date.today
+        return I18n.t(:label_member_inactive)
+      else
+        return I18n.t(:label_member_warning)
+      end
+    else
+      return I18n.t(:label_member_active)
+    end
+  end
+  
+  def state_class
+    if self.exit
+      if self.exit < Date.today
+        return 'danger'
+      else
+        return 'warning'
+      end
+    else
+      return 'success'
+    end
+  end
 
   private
 

@@ -47,11 +47,17 @@ Judohp::Application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
+  
+  resources :member_steps
 
   match I18n.t('sessions.new.action').downcase, to: 'sessions#new', via: :get, as: 'signin'
   match I18n.t('sessions.destroy.action').downcase, to: 'sessions#destroy', via: :delete, as: 'signout'
 
   match "/#{I18n.t('activerecord.models.user').downcase}/#{I18n.t('users.activate.title').downcase}/:activation_token", to: 'users#activate', via: :get, as: 'activate'
+  
+  match "/#{I18n.t('profile', count: 1).downcase}", :controller => 'profile', :action => 'index', :via => :get, :as => "profile"
+  get "/#{I18n.t('profile', count: 1).downcase}/#{I18n.t('members', count: 1).downcase}/:member_number", :to => 'profile#member', :as => "profile_member"
+  match "/#{I18n.t('profile', count: 1).downcase}/#{I18n.t('profile.password').downcase}", :controller => 'profile', :action => 'password', :via => [:get, :post], :as => "change_password"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

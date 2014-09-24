@@ -32,9 +32,8 @@ class User < ActiveRecord::Base
 
   # Passwort
   has_secure_password
-
-  validates :password, presence: true, length: { minimum: 6 }, :unless => :update_and_blank_password?
-  validates :password_confirmation, presence: true, :unless => :update_and_blank_password?
+  validates :password, presence: true
+  validate :validate_password_length
 
   # Erinnerungs-Token
   before_save :create_remember_token
@@ -64,7 +63,10 @@ class User < ActiveRecord::Base
     self.activation_token = SecureRandom.urlsafe_base64
   end
   
-  def update_and_blank_password?
-    !(self.new_record?) && self.password.blank? && self.password_confirmation.blank?
+  def validate_password_length
+    return if password.blank?
+    if !password.nil? && password.size < 6
+      errors.add(:password, :too_short, :count => 6)
+    end
   end
 end

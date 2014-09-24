@@ -1,0 +1,70 @@
+<% provide(:title, @member)%>
+
+<div class="row">
+	<div class="col-md-6">
+		<h4>Mitglieder-Daten</h4>
+		<table class="table table-striped">
+			<tbody>
+				<tr class="<%= @member.state_class %>">
+					<td><strong><%= t(:field_member_state) %></strong></td>
+					<td><%= @member.state %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.member.member_number') %></strong></td>
+					<td><%= @member.member_number %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.member.entry') %></strong></td>
+					<td><%= l @member.entry %></td>
+				</tr>
+				<% if @member.exit %>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.member.exit') %></strong></td>
+					<td><%= l @member.exit %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-6">
+		<h4>Personen-Daten</h4>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.last_name') %></strong></td>
+					<td><%= @member.person.last_name %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.first_name') %></strong></td>
+					<td><%= @member.person.first_name %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.gender') %></strong></td>
+					<td><%= @member.person.gender ? t('gender.male') : t('gender.female') %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.birth_date') %></strong></td>
+					<td><%= l @member.person.birth_date if @member.person.birth_date %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.birth_place') %></strong></td>
+					<td><%= @member.person.birth_place %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.person.address') %></br></strong></td>
+					<td><%= @member.person.street %></br><%= "%05d" % @member.person.zip if @member.person.zip != nil %> <%= @member.person.city %></td>
+				</tr>
+				<tr>
+					<td><strong><%= t('activerecord.attributes.user.email') %></br></strong></td>
+					<td><%= @member.user.email %></td>
+				</tr>
+				<% @member.person.contacts.each do |contact| %>
+				<tr>
+					<td><strong><%= contact.name %></br></strong></td>
+					<td><%= contact.number %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

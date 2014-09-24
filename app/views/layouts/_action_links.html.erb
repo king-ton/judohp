@@ -1,4 +1,7 @@
 <ul class="nav nav-pills pull-right action-links">
+	
+	<%= yield(:action_link) if yield(:action_link) != '' %>
+	
 	<% if controller?('users', 'roles', 'members', 'people', 'age_classes', 'competitions', 'competition_templates', 'venues') %>
 
 	<%# Übersicht %>
